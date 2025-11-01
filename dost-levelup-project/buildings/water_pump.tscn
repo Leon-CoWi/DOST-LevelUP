@@ -328,7 +328,7 @@ position = Vector2(16, 10)
 scale = Vector2(0.328125, 0.328125)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 autoplay = "default"
-frame_progress = 0.871453
+frame_progress = 0.793869
 script = ExtResource("2_tktok")
 damage_popup_scene = ExtResource("3_eqj6y")
 

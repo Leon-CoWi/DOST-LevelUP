@@ -352,7 +352,7 @@ animations = [{
 
 [node name="quake_breaker" type="AnimatedSprite2D"]
 z_index = 2
-position = Vector2(44, -13)
+position = Vector2(32, -19)
 scale = Vector2(1.5293, 1.82031)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 autoplay = "default"

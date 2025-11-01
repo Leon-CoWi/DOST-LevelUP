@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bkw3188x2dtok" path="res://scripts/plot_slot.gd" id="1_4dmsh"]
 [ext_resource type="Texture2D" uid="uid://bte73g1j785tq" path="res://Assets/landscape/map-grass2.png" id="1_7c8nn"]
-[ext_resource type="Script" uid="uid://cllkd4rm7sk1p" path="res://scripts/hover.gd" id="3_7c8nn"]
+[ext_resource type="Script" path="res://scripts/hover.gd" id="3_7c8nn"]
 
 [node name="PlotSlot" type="TextureButton"]
 custom_minimum_size = Vector2(32, 32)

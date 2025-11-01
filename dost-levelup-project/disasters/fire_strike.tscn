@@ -128,7 +128,7 @@ animations = [{
 
 [node name="Fire strike" type="AnimatedSprite2D"]
 z_index = 2
-position = Vector2(-16, -30)
+position = Vector2(87, -48)
 scale = Vector2(1.97168, 2.5415)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 animation = &"new_animation"

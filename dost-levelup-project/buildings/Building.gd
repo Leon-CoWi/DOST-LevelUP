@@ -138,6 +138,7 @@ func repair_building(amount: int) -> void:
 	popup = damage_popup_scene.instantiate()
 	get_tree().current_scene.add_child(popup)
 	popup.get_node("Label").add_theme_color_override("font_color", Color(144, 238, 144))
+	popup.get_node("Label").self_modulate = Color(0, 1, 0)
 	var jitter_x := randf_range(-6, 6)
 	popup.show_num(amount, global_position + Vector2(jitter_x, -20))
 

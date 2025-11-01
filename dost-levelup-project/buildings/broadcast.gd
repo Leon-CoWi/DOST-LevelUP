@@ -2,9 +2,8 @@ extends Building
 
 class_name BroadcastTower
 
-var _buffed_positions := []
-# Reducing wind damage by 0.5 (50% less damage)
-const WIND_BUFF := -0.5
+var cooldown_timer = 0.0
+var effect_interval = 20.0
 
 func init_stats():
 	max_hp = 150
@@ -17,47 +16,30 @@ func init_stats():
 	production_rate = 0
 	energy_consumption = 10
 
-	#trigger_effect()
-
-func _process(delta):
-	pass
 
 func trigger_effect(delta):
-	if not get_parent() or not get_parent().has_method("get_tile_at"):
-		return null
-	for x in range(plot_index[0] - 1, plot_index[0] + 2):
-		for y in range(plot_index[1] - 1, plot_index[1] + 2):
-			var pos = Vector2(x, y)
-			var tile = get_parent().get_tile_at(pos)
-			if not tile:
-				continue
-			if _buffed_positions.has(pos):
-				continue
-			var current = tile.get("wind_resistance")
-			if current == null:
-				tile.set("wind_resistance", 1.0)  # Start at full damage
-			# Subtract WIND_BUFF to reduce damage taken
-			tile.set("wind_resistance", tile.get("wind_resistance") + WIND_BUFF)
-			_buffed_positions.append(pos)
-	return null
+	#for each adjacent plot every 20 seconds, increase their wind resistance by 0.02 (up to a max of 0.3)
+	cooldown_timer += delta
+	if cooldown_timer >= effect_interval:
+		cooldown_timer = 0.0
+		show_increase()
+		var adjacent = get_parent().adjacent_plot_indices 
+		var parent_node = get_parent().get_parent().get_parent()
+		for adj_index in adjacent:
+			var tile = parent_node.get_tile_at(adj_index)
+			if tile and tile.is_occupied and tile.building_scene:
+				tile.building_scene.wind_resistance = max(tile.building_scene.wind_resistance - 0.02, 0.3)
+				
 
-#func _exit_tree():
-#	_revert_wind_buff()
-
-#func _revert_wind_buff():
-#	if not get_parent() or not get_parent().has_method("get_tile_at"):
-#		return
-#	for pos in _buffed_positions:
-#		var tile = get_parent().get_tile_at(pos)
-#		if not tile:
-#			continue
-#		var current = tile.get("wind_resistance")
-#		if current != null:
-#			tile.set("wind_resistance", current - WIND_BUFF)
-#	_buffed_positions.clear()
-
-#func take_damage(amount):
-#	hp -= amount
-#	if hp <= 0:
-#		_revert_wind_buff()
-#		queue_free()
+func show_increase() -> void:
+	print("repairing")
+	if inactive:
+		return
+	
+	popup = damage_popup_scene.instantiate()
+	get_tree().current_scene.add_child(popup)
+	popup.get_node("Label").add_theme_color_override("font_color", Color(173, 216, 230))
+	#reduce size to 32
+	popup.get_node("Label").add_theme_font_size_override("font_size", 48)
+	var jitter_x := randf_range(-6, 6)
+	popup.show_text("Wind W. Res++", global_position + Vector2(jitter_x, -20))
