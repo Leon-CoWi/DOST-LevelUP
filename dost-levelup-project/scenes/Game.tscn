@@ -1,13 +1,30 @@
-[gd_scene load_steps=16 format=4 uid="uid://cudva8w7g4cq6"]
+[gd_scene load_steps=20 format=3 uid="uid://cudva8w7g4cq6"]
 
 [ext_resource type="PackedScene" uid="uid://dedbpf86ccbmq" path="res://scenes/card_holder.tscn" id="1_ibkli"]
 [ext_resource type="PackedScene" uid="uid://bgotnrxymhdmn" path="res://scenes/camera_manager.tscn" id="2_78awf"]
 [ext_resource type="Script" uid="uid://160mq01f5ash" path="res://scripts/Game.gd" id="2_gamegd"]
 [ext_resource type="PackedScene" uid="uid://cfdlnl2idxx8u" path="res://scenes/player_plot.tscn" id="3_cpr0p"]
 [ext_resource type="Texture2D" uid="uid://cllmt8gc4d4kg" path="res://Assets/landscape/Sprite-0002.png" id="3_kiw3p"]
+[ext_resource type="Texture2D" uid="uid://capy81h6w4vjw" path="res://Assets/landscape/Grass.png" id="3_qy1jj"]
 [ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="3_s0nni"]
+[ext_resource type="Texture2D" uid="uid://bons6a4343imk" path="res://Assets/landscape/sadas.png" id="4_3xj3m"]
 [ext_resource type="Texture2D" uid="uid://q32nagr62ido" path="res://Assets/UI/Energy-Sheet.png" id="6_aug50"]
 [ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://UI/Healthbar/healthbar-building.tscn" id="8_400sg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcffj"]
+texture = ExtResource("3_qy1jj")
+texture_region_size = Vector2i(600, 600)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(48, 12)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rd6h"]
+texture = ExtResource("4_3xj3m")
+texture_region_size = Vector2i(144, 87)
+1:1/0 = 0
+0:1/0 = 0
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -5)
+1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_400sg"]
 texture = ExtResource("3_kiw3p")
@@ -19,8 +36,10 @@ texture_region_size = Vector2i(256, 256)
 
 [sub_resource type="TileSet" id="TileSet_g4kob"]
 tile_shape = 1
-tile_size = Vector2i(128, 64)
+tile_size = Vector2i(206, 106)
 sources/2 = SubResource("TileSetAtlasSource_400sg")
+sources/0 = SubResource("TileSetAtlasSource_mcffj")
+sources/1 = SubResource("TileSetAtlasSource_2rd6h")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kiw3p"]
 atlas = ExtResource("6_aug50")
@@ -61,14 +80,18 @@ animations = [{
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 4.0
+offset_right = 4.0
 script = ExtResource("2_gamegd")
 
 [node name="camera_manager" parent="." instance=ExtResource("2_78awf")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="camera_manager"]
+z_index = 1
 y_sort_enabled = true
-position = Vector2(26, -48)
-tile_map_data = PackedByteArray("AAAAAPz/AgAAAAAAAAAAAP3/AgAAAAAAAAAAAP7/AgAAAAAAAAAAAP//AgAAAAAAAAAAAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAUAAgAAAAAAAAABAPz/AgAAAAAAAAABAP3/AgAAAAAAAAABAP7/AgAAAAAAAAABAP//AgAAAAAAAAABAAAAAgAAAAAAAAABAAEAAgAAAAAAAAABAAIAAgAAAAAAAAABAAMAAgAAAAAAAAABAAQAAgAAAAAAAAABAAUAAgAAAAAAAAACAPz/AgAAAAAAAAACAP3/AgAAAAAAAAACAP7/AgAAAAAAAAACAP//AgAAAAAAAAACAAAAAgAAAAAAAAACAAEAAgAAAAAAAAACAAIAAgAAAAAAAAACAAMAAgAAAAAAAAACAAQAAgAAAAAAAAACAAUAAgAAAAAAAAABAPr/AgAAAAAAAAABAPv/AgAAAAAAAAABAAYAAgAAAAAAAAACAPr/AgAAAAAAAAACAPv/AgAAAAAAAAACAAYAAgAAAAAAAAADAPr/AgAAAAAAAAADAPv/AgAAAAAAAAADAPz/AgAAAAAAAAADAP3/AgAAAAAAAAADAP7/AgAAAAAAAAADAP//AgAAAAAAAAADAAAAAgAAAAAAAAADAAEAAgAAAAAAAAADAAIAAgAAAAAAAAADAAMAAgAAAAAAAAADAAQAAgAAAAAAAAADAAUAAgAAAAAAAAADAAYAAgAAAAAAAAAEAPr/AgAAAAAAAAAEAPv/AgAAAAAAAAAEAPz/AgAAAAAAAAAEAP3/AgAAAAAAAAAEAP7/AgAAAAAAAAAEAP//AgAAAAAAAAAEAAAAAgAAAAAAAAAEAAEAAgAAAAAAAAAEAAIAAgAAAAAAAAAEAAMAAgAAAAAAAAAEAAQAAgAAAAAAAAAEAAUAAgAAAAAAAAAEAAYAAgAAAAAAAAAFAPr/AgAAAAAAAAAFAPv/AgAAAAAAAAAFAPz/AgAAAAAAAAAFAP3/AgAAAAAAAAAFAP7/AgAAAAAAAAAFAP//AgAAAAAAAAAFAAAAAgAAAAAAAAAFAAEAAgAAAAAAAAAFAAIAAgAAAAAAAAAFAAMAAgAAAAAAAAAFAAQAAgAAAAAAAAAFAAUAAgAAAAAAAAAFAAYAAgAAAAAAAAAGAPr/AgAAAAAAAAAGAPv/AgAAAAAAAAAGAPz/AgAAAAAAAAAGAP3/AgAAAAAAAAAGAP7/AgAAAAAAAAAGAP//AgAAAAAAAAAGAAAAAgAAAAAAAAAGAAEAAgAAAAAAAAAGAAIAAgAAAAAAAAAGAAMAAgAAAAAAAAAGAAQAAgAAAAAAAAAGAAUAAgAAAAAAAAAGAAYAAgAAAAAAAAAHAPr/AgAAAAAAAAAHAPv/AgAAAAAAAAAHAPz/AgAAAAAAAAAHAP3/AgAAAAAAAAAHAP7/AgAAAAAAAAAHAP//AgAAAAAAAAAHAAAAAgAAAAAAAAAHAAEAAgAAAAAAAAAHAAIAAgAAAAAAAAAHAAMAAgAAAAAAAAAHAAQAAgAAAAAAAAAHAAUAAgAAAAAAAAAHAAYAAgAAAAAAAAAHAAcAAgAAAAAAAAD+//7/AgAAAAAAAAD+////AgAAAAAAAAD+/wAAAgAAAAAAAAD+/wEAAgAAAAAAAAD+/wIAAgAAAAAAAAD+/wMAAgAAAAAAAAD+/wQAAgAAAAAAAAD+/wUAAgAAAAAAAAD+/wYAAgAAAAAAAAD+/xEAAgAAAAAAAAD///7/AgAAAAAAAAD/////AgAAAAAAAAD//wAAAgAAAAAAAAD//wEAAgAAAAAAAAD//wIAAgAAAAAAAAD//wMAAgAAAAAAAAD//wQAAgAAAAAAAAD//wUAAgAAAAAAAAD//wYAAgAAAAAAAAD//xEAAgAAAAAAAAAAAAYAAgAAAAAAAAAAABEAAgAAAAAAAAABABEAAgAAAAAAAAACABEAAgAAAAAAAAADABEAAgAAAAAAAAAEABEAAgAAAAAAAAAFABEAAgAAAAAAAAAGABEAAgAAAAAAAAAHAAgAAgAAAAAAAAAHAAkAAgAAAAAAAAAHAAoAAgAAAAAAAAAHAAsAAgAAAAAAAAAHAAwAAgAAAAAAAAAHAA0AAgAAAAAAAAAHAA4AAgAAAAAAAAAHAA8AAgAAAAAAAAAHABAAAgAAAAAAAAAHABEAAgAAAAAAAAAIAP7/AgAAAAAAAAAIAP//AgAAAAAAAAAIAAAAAgAAAAAAAAAIAAEAAgAAAAAAAAAIAAIAAgAAAAAAAAAIAAMAAgAAAAAAAAAIAAQAAgAAAAAAAAAIAAUAAgAAAAAAAAAIAAYAAgAAAAAAAAAIAAcAAgAAAAAAAAAIAAgAAgAAAAAAAAAIAAkAAgAAAAAAAAAIAAoAAgAAAAAAAAAIAAsAAgAAAAAAAAAIAAwAAgAAAAAAAAAIAA0AAgAAAAAAAAAIAA4AAgAAAAAAAAAIAA8AAgAAAAAAAAAIABAAAgAAAAAAAAAIABEAAgAAAAAAAAAJAP7/AgAAAAAAAAAJAP//AgAAAAAAAAAJAAAAAgAAAAAAAAAJAAEAAgAAAAAAAAAJAAIAAgAAAAAAAAAJAAMAAgAAAAAAAAAJAAQAAgAAAAAAAAAJAAUAAgAAAAAAAAAJAAYAAgAAAAAAAAAJAAcAAgAAAAAAAAAJAAgAAgAAAAAAAAAJAAkAAgAAAAAAAAAJAAoAAgAAAAAAAAAJAAsAAgAAAAAAAAAJAAwAAgAAAAAAAAAJAA0AAgAAAAAAAAAJAA4AAgAAAAAAAAAJAA8AAgAAAAAAAAAJABAAAgAAAAAAAAAJABEAAgAAAAAAAAA=")
+texture_filter = 1
+position = Vector2(55, -58)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_g4kob")
 
 [node name="PlayerName" type="Label" parent="."]
