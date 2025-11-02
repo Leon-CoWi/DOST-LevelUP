@@ -2,7 +2,7 @@ extends Node2D
 
 @export var zoom_speed := 0.1
 @export var min_zoom := 0.5
-@export var max_zoom := 2.0
+@export var max_zoom := 20.0
 @export var drag_speed := 1.0
 
 # Smooth zoom options
@@ -26,6 +26,7 @@ var pan_limits: Rect2 = Rect2(-10000, -10000, 20000, 20000) # Internal; derived 
 var dragging := false
 var drag_delta := Vector2.ZERO
 var target_zoom := 1.0
+var zoom_anchor_position := Vector2.ZERO  # World position to zoom towards
 
 @onready var camera := get_node_or_null("Camera2D") as Camera2D
 
@@ -111,11 +112,11 @@ func _input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			dragging = true
 		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			# zoom in (smaller zoom scalar)
-			_update_target_zoom(target_zoom - zoom_speed)
+			# zoom in towards mouse position
+			_zoom_at_point(event.position, target_zoom + zoom_speed)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			# zoom out (larger zoom scalar)
-			_update_target_zoom(target_zoom + zoom_speed)
+			# zoom out from mouse position
+			_zoom_at_point(event.position, target_zoom - zoom_speed)
 
 # Catch releases that might be consumed elsewhere
 func _unhandled_input(event: InputEvent) -> void:
@@ -144,17 +145,39 @@ func _update_target_zoom(new_zoom: float) -> void:
 		var max_x: float = pan_limits.size.x / viewport_size.x
 		var max_y: float = pan_limits.size.y / viewport_size.y
 		var dynamic_max: float = min(max_x, max_y)
-		# final upper bound is the smaller of user max_zoom and dynamic_max
-		var final_upper: float = min(max_zoom, dynamic_max)
-		# ensure lower bound does not exceed final_upper; if min_zoom > final_upper we allow only final_upper
-		var final_lower: float = min(min_zoom, final_upper)
+		# Allow user to zoom in beyond dynamic limit for closer inspection
+		# Only apply dynamic_max to prevent zooming OUT too far
+		var final_upper: float = max_zoom
+		var final_lower: float = min(min_zoom, dynamic_max)
 		target_zoom = clamp(new_zoom, final_lower, final_upper)
 	else:
 		target_zoom = clamp(new_zoom, min_zoom, max_zoom)
 
+func _zoom_at_point(mouse_pos: Vector2, new_zoom: float) -> void:
+	# Get the world position under the mouse BEFORE zoom
+	var viewport_size: Vector2 = get_viewport().get_visible_rect().size
+	var mouse_world_pos_before: Vector2 = camera.position + (mouse_pos - viewport_size * 0.5) / camera.zoom.x
+	
+	# Update the target zoom
+	_update_target_zoom(new_zoom)
+	
+	# Calculate what the world position under mouse would be AFTER zoom with current camera position
+	var mouse_world_pos_after: Vector2 = camera.position + (mouse_pos - viewport_size * 0.5) / target_zoom
+	
+	# Adjust camera position to keep the world point under the mouse cursor
+	camera.position += mouse_world_pos_before - mouse_world_pos_after
+	
+	# Apply pan limits to ensure we stay in bounds
+	_apply_pan_limits()
+
 func _apply_pan_limits() -> void:
 	if not limit_panning or camera == null:
 		return
+	
+	# When zoomed in significantly (zoom > 2.0), disable pan limits to allow full exploration
+	if camera.zoom.x > 2.0:
+		return
+	
 	# Size of the viewport (screen) in pixels
 	var viewport_size: Vector2 = get_viewport().get_visible_rect().size
 	if viewport_size.x <= 0 or viewport_size.y <= 0:
@@ -170,16 +193,19 @@ func _apply_pan_limits() -> void:
 	var world_min_center: Vector2 = pan_limits.position + half_view - margin_vec
 	var world_max_center: Vector2 = pan_limits.position + pan_limits.size - half_view + margin_vec
 
-	# If world is smaller than viewport in any axis, center the camera on that axis
-	if pan_limits.size.x <= half_view.x * 2.0:
-		camera.position.x = pan_limits.position.x + pan_limits.size.x * 0.5
-	else:
+	# Only apply limits if the view is smaller than the world bounds
+	# When zoomed in far enough, allow free panning within the entire world area
+	if pan_limits.size.x > half_view.x * 2.0:
 		camera.position.x = clamp(camera.position.x, world_min_center.x, world_max_center.x)
-
-	if pan_limits.size.y <= half_view.y * 2.0:
-		camera.position.y = pan_limits.position.y + pan_limits.size.y * 0.5
 	else:
+		# When zoomed in, just keep camera center within the world bounds
+		camera.position.x = clamp(camera.position.x, pan_limits.position.x, pan_limits.position.x + pan_limits.size.x)
+
+	if pan_limits.size.y > half_view.y * 2.0:
 		camera.position.y = clamp(camera.position.y, world_min_center.y, world_max_center.y)
+	else:
+		# When zoomed in, just keep camera center within the world bounds
+		camera.position.y = clamp(camera.position.y, pan_limits.position.y, pan_limits.position.y + pan_limits.size.y)
 
 	if debug_limits:
 		print("[Camera] half_view=", half_view, " min_center=", world_min_center, " max_center=", world_max_center, " cam_pos=", camera.position)

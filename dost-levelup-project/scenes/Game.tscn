@@ -180,14 +180,13 @@ metadata/_edit_lock_ = true
 
 [node name="camera_manager" parent="." instance=ExtResource("2_78awf")]
 position = Vector2(-4, 0)
-zoom_speed = 0.5
-max_zoom = 10.0
+min_zoom = 1.0
 drag_speed = 2.0
-limit_left = -1628.0
-limit_top = -1628.0
-limit_bottom = 200.0
+limit_left = -850.0
+limit_top = -500.0
+limit_right = 800.0
+limit_bottom = 300.0
 pan_margin = 128.0
-pan_padding = 96.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="camera_manager"]
 z_index = 1
