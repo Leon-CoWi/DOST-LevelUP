@@ -11,36 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://q32nagr62ido" path="res://Assets/UI/Energy-Sheet.png" id="6_aug50"]
 [ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://UI/Healthbar/healthbar-building.tscn" id="8_400sg"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcffj"]
-texture = ExtResource("3_qy1jj")
-texture_region_size = Vector2i(600, 600)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(48, 12)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rd6h"]
-texture = ExtResource("4_3xj3m")
-texture_region_size = Vector2i(144, 87)
-1:1/0 = 0
-0:1/0 = 0
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, -5)
-1:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_400sg"]
-texture = ExtResource("3_kiw3p")
-texture_region_size = Vector2i(256, 256)
-1:2/0 = 0
-0:2/0 = 0
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, -2)
-
-[sub_resource type="TileSet" id="TileSet_g4kob"]
-tile_shape = 1
-tile_size = Vector2i(206, 106)
-sources/2 = SubResource("TileSetAtlasSource_400sg")
-sources/0 = SubResource("TileSetAtlasSource_mcffj")
-sources/1 = SubResource("TileSetAtlasSource_2rd6h")
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kiw3p"]
 atlas = ExtResource("6_aug50")
 region = Rect2(0, 0, 70, 70)
@@ -77,6 +47,36 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcffj"]
+texture = ExtResource("3_qy1jj")
+texture_region_size = Vector2i(600, 600)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(48, 12)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rd6h"]
+texture = ExtResource("4_3xj3m")
+texture_region_size = Vector2i(144, 87)
+1:1/0 = 0
+0:1/0 = 0
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -5)
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_400sg"]
+texture = ExtResource("3_kiw3p")
+texture_region_size = Vector2i(256, 256)
+1:2/0 = 0
+0:2/0 = 0
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -2)
+
+[sub_resource type="TileSet" id="TileSet_g4kob"]
+tile_shape = 1
+tile_size = Vector2i(196, 97)
+sources/2 = SubResource("TileSetAtlasSource_400sg")
+sources/0 = SubResource("TileSetAtlasSource_mcffj")
+sources/1 = SubResource("TileSetAtlasSource_2rd6h")
+
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -84,71 +84,117 @@ offset_left = 4.0
 offset_right = 4.0
 script = ExtResource("2_gamegd")
 
-[node name="camera_manager" parent="." instance=ExtResource("2_78awf")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="camera_manager"]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(55, -58)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
-tile_set = SubResource("TileSet_g4kob")
-
-[node name="PlayerName" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
+[node name="PlayerName" type="Label" parent="CanvasLayer"]
+offset_left = 28.0
 offset_top = 508.0
-offset_right = 174.0
+offset_right = 178.0
 offset_bottom = 536.0
 theme_override_fonts/font = ExtResource("3_s0nni")
 text = "CUrrent Player"
 
-[node name="PlayerEnergy" type="Label" parent="."]
-layout_mode = 0
-offset_left = 592.0
+[node name="PlayerEnergy" type="Label" parent="CanvasLayer"]
+offset_left = 596.0
 offset_top = 534.0
-offset_right = 613.0
+offset_right = 617.0
 offset_bottom = 562.0
 theme_override_colors/font_color = Color(0.0347404, 0.193706, 0.0775828, 1)
 theme_override_fonts/font = ExtResource("3_s0nni")
 text = " 3"
 
-[node name="OpponentName" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1017.0
+[node name="OpponentName" type="Label" parent="CanvasLayer"]
+offset_left = 1021.0
 offset_top = 502.0
-offset_right = 1131.0
+offset_right = 1135.0
 offset_bottom = 530.0
 theme_override_fonts/font = ExtResource("3_s0nni")
 text = "OppPlayer"
 horizontal_alignment = 2
 
-[node name="OpponentEnergy" type="Label" parent="."]
-layout_mode = 0
-offset_left = 849.0
+[node name="OpponentEnergy" type="Label" parent="CanvasLayer"]
+offset_left = 853.0
 offset_top = 504.0
-offset_right = 963.0
+offset_right = 967.0
 offset_bottom = 557.0
 theme_override_fonts/font = ExtResource("3_s0nni")
 text = "Energy: 3
 "
 horizontal_alignment = 2
 
-[node name="PlayerCards" parent="." instance=ExtResource("1_ibkli")]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(1000, 515)
+scale = Vector2(0.871429, 0.871429)
+sprite_frames = SubResource("SpriteFrames_3xj3m")
+autoplay = "default"
+frame_progress = 0.44364
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 468.0
+offset_right = 64.0
+offset_bottom = 491.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_s0nni")
+theme_override_font_sizes/font_size = 8
+text = "TIME"
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+autostart = true
+
+[node name="PlayerHealthbar" parent="CanvasLayer" instance=ExtResource("8_400sg")]
+offset_left = 28.0
+offset_top = 427.0
+offset_right = 292.0
+offset_bottom = 801.0
+
+[node name="Sprite2D" parent="CanvasLayer/PlayerHealthbar" index="1"]
+position = Vector2(131.5, 181.375)
+scale = Vector2(3.5125, 3.81563)
+
+[node name="OpponentHealthbar" parent="CanvasLayer" instance=ExtResource("8_400sg")]
+offset_left = 873.0
+offset_top = 433.0
+offset_right = 1137.0
+offset_bottom = 807.0
+
+[node name="Sprite2D" parent="CanvasLayer/OpponentHealthbar" index="1"]
+position = Vector2(131.5, 181.375)
+scale = Vector2(3.5125, 3.81563)
+
+[node name="OpponentCards" parent="CanvasLayer" instance=ExtResource("1_ibkli")]
 z_index = 1
-layout_mode = 1
-offset_left = 381.0
+offset_left = -483.0
+offset_top = -157.0
+offset_right = -72.0
+offset_bottom = -10.0
+
+[node name="PlayerCards" parent="CanvasLayer" instance=ExtResource("1_ibkli")]
+z_index = 1
+offset_left = 385.0
 offset_top = 516.0
-offset_right = 762.0
+offset_right = 766.0
 offset_bottom = 663.0
 metadata/_edit_lock_ = true
 
-[node name="OpponentCards" parent="." instance=ExtResource("1_ibkli")]
+[node name="camera_manager" parent="." instance=ExtResource("2_78awf")]
+position = Vector2(-4, 0)
+zoom_speed = 0.5
+max_zoom = 10.0
+drag_speed = 2.0
+limit_left = -1628.0
+limit_top = -1628.0
+limit_bottom = 200.0
+pan_margin = 128.0
+pan_padding = 96.0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="camera_manager"]
 z_index = 1
-layout_mode = 1
-offset_left = -487.0
-offset_top = -157.0
-offset_right = -76.0
-offset_bottom = -10.0
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(86, -32)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
 
 [node name="Players" type="Node" parent="."]
 
@@ -166,50 +212,7 @@ offset_right = 2256.0
 offset_bottom = -871.0
 scale = Vector2(6, 6)
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(996, 515)
-scale = Vector2(0.871429, 0.871429)
-sprite_frames = SubResource("SpriteFrames_3xj3m")
-autoplay = "default"
-frame_progress = 0.44364
+[connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 582.0
-offset_top = 611.0
-offset_right = 622.0
-offset_bottom = 634.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_s0nni")
-theme_override_font_sizes/font_size = 8
-text = "TIME"
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[node name="PlayerHealthbar" parent="." instance=ExtResource("8_400sg")]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 427.0
-offset_right = 288.0
-offset_bottom = 801.0
-
-[node name="Sprite2D" parent="PlayerHealthbar" index="1"]
-position = Vector2(131.5, 181.375)
-scale = Vector2(3.5125, 3.81563)
-
-[node name="OpponentHealthbar" parent="." instance=ExtResource("8_400sg")]
-layout_mode = 0
-offset_left = 869.0
-offset_top = 433.0
-offset_right = 1133.0
-offset_bottom = 807.0
-
-[node name="Sprite2D" parent="OpponentHealthbar" index="1"]
-position = Vector2(131.5, 181.375)
-scale = Vector2(3.5125, 3.81563)
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-
-[editable path="PlayerHealthbar"]
-[editable path="OpponentHealthbar"]
+[editable path="CanvasLayer/PlayerHealthbar"]
+[editable path="CanvasLayer/OpponentHealthbar"]
