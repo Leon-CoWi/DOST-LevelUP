@@ -226,6 +226,9 @@ func _on_plot_pressed(idx, btn) -> void:
 		var node = layout.get_child(player_cards.current_selected)
 		node.call_deferred("set_selected", false)
 	# schedule replacement
+	await get_tree().create_timer(0.2).timeout
+	if local_hand.slots[player_cards.current_selected].item != null:
+		return
 	var timer = get_tree().create_timer(3.0)
 	timer.timeout.connect(_replace_card.bind(player_cards.current_selected))
 	_populate_card_holder(player_cards, [], true)
@@ -332,7 +335,7 @@ func _populate_card_holder(container: Node, _hand: Array, face_up: bool, count: 
 		layout_node = container.get_node("GridContainer")
 
 	# Determine how many slots to iterate: always prefer explicit count, otherwise 3
-	var cards_to_create = 3
+	var cards_to_create = 4
 	if count >= 0:
 		cards_to_create = count
 
@@ -366,73 +369,7 @@ func _populate_card_holder(container: Node, _hand: Array, face_up: bool, count: 
 			var s = local_hand.slots[i]
 			slot_node.card_resource = s.item
 			var itemDisplay = slot_node.get_node("CenterContainer/Panel/itemDisplay")
-			# Prefer explicit face_up/face_down textures if defined on the Card resource
-			var tex: Texture2D = null
-			if s.item != null:
-				if s.item and face_up and s.item.texture_face_up != null:
-					tex = s.item.texture_face_up
-				elif s.item and not face_up and s.item.texture_face_down != null:
-					tex = s.item.texture_face_down
-				slot_node.get_node("Cost").text = str(s.item.cost)
-				
-				
-
-			if tex != null:
-				itemDisplay.texture = tex
-				itemDisplay.visible = true
-			else:
-				itemDisplay.visible = false
-		else:
-			# Opponent or face-down: show a card-back texture if available
-			var itemDisplay2 = slot_node.get_node("CenterContainer/Panel/itemDisplay")
-			var back_tex: Texture2D = null
-			# Try to use card_pool_meta first
-			if card_pool_meta.size() > 0:
-				var first_key = card_pool_meta.keys()[0]
-				var back_path = card_pool_meta[first_key]["path"]
-				if ResourceLoader.exists(back_path):
-					var back_res = ResourceLoader.load(back_path)
-					if back_res and back_res.texture_face_down != null:
-						back_tex = back_res.texture_face_down
-					elif back_res and back_res.texture_face_up != null:
-						back_tex = back_res.texture_face_up
-			# Fallback to card_1
-			# Prefer explicit Network.card_back if set
-			if back_tex == null and Network and Network.card_back != null:
-				back_tex = Network.card_back
-			# Fallback to card_1 resource
-			if back_tex == null and ResourceLoader.exists("res://cards/card_1.tres"):
-				var fb = ResourceLoader.load("res://cards/card_1.tres")
-				if fb and fb.texture_face_down != null:
-					back_tex = fb.texture_face_down
-				elif fb and fb.texture_face_up != null:
-					back_tex = fb.texture_face_up
-			# If this opponent slot has been revealed, show the revealed card face-up
-			var my_id = multiplayer.get_unique_id()
-			# Assume a single-opponent layout; find the peer id of the opponent if available
-			var revealed_card_id = null
-			for raw_key in revealed_cards.keys():
-				var pid = int(raw_key)
-				if pid != my_id:
-					var map = revealed_cards[raw_key]
-					if map.has(i):
-						revealed_card_id = map[i]
-						break
-			if revealed_card_id != null:
-				var res_path = "res://cards/card_%d.tres" % int(revealed_card_id)
-				if ResourceLoader.exists(res_path):
-					var card_res = ResourceLoader.load(res_path)
-					if card_res and card_res.texture_face_up != null:
-						itemDisplay2.texture = card_res.texture_face_up
-						itemDisplay2.visible = true
-						continue
-			# No reveal for this slot: show back texture if available
-			if back_tex != null:
-				itemDisplay2.texture = back_tex
-				itemDisplay2.visible = true
-			else:
-				itemDisplay2.visible = false
-
+			slot_node.set_card(s.item)
 
 @rpc("any_peer", "reliable")
 func rpc_set_player_names(names: Dictionary):
@@ -452,10 +389,10 @@ func rpc_set_player_names(names: Dictionary):
 				opp_name = pname
 
 	# Set local UI labels (PlayerName on left, OpponentName on right)
-	if my_name != null and has_node("PlayerName"):
-		$PlayerName.text = str(my_name)
-	if opp_name != null and has_node("OpponentName"):
-		$OpponentName.text = str(opp_name)
+	if my_name != null and has_node("CanvasLayer/PlayerName"):
+		$CanvasLayer/PlayerName.text = str(my_name)
+	if opp_name != null and has_node("CanvasLayer/OpponentName"):
+		$CanvasLayer/OpponentName.text = str(opp_name)
 
 
 
@@ -475,10 +412,10 @@ func rpc_update_energies(energies: Dictionary) -> void:
 			if opp_energy == null:
 				opp_energy = val
 
-	if my_energy != null and has_node("PlayerEnergy"):
-		$PlayerEnergy.text = "Energy: " + str(my_energy)
-	if opp_energy != null and has_node("OpponentEnergy"):
-		$OpponentEnergy.text = "Energy: " + str(opp_energy)
+	if my_energy != null and has_node("CanvasLayer/PlayerEnergy"):
+		$CanvasLayer/PlayerEnergy.text = str(my_energy)
+	if opp_energy != null and has_node("CanvasLayer/OpponentEnergy"):
+		$CanvasLayer/OpponentEnergy.text = "Energy: " + str(opp_energy)
 
 
 func rpc_set_card_pool(pool_meta: Dictionary) -> void:
@@ -550,6 +487,10 @@ func rpc_place_building(owner_peer_id: int, plot_index, card_id: int) -> void:
 			btn.is_occupied = true
 			btn.building_scene = building_instance
 			btn.building_scene.plot_index = plot_idx
+			print("Placed building for owner %d at %s (btn idx %d)" % [owner_peer_id, str(plot_index), i])
+			if card_id == 0:
+				print("Smart Center placed")
+				Network.request_full_hand_draw(owner_peer_id)
 			# Center the building visually within the plot slot (uses Pivot or exported placement_offset if available)
 			_align_building_on_plot(btn, building_instance)
 			print("[Game] Placed building for owner %d at %s (btn idx %d)" % [owner_peer_id, str(plot_index), i])

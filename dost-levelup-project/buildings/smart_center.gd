@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 class_name SC
 
-@export var max_hp: int = 3000
+@export var max_hp: int = 1500
 var hp: int
 var health_bar 
 var hp_not_init = true
@@ -34,9 +34,9 @@ func _ready():
 
 	# Find the health bar safely
 	if get_parent().board_owner == "player":
-		health_bar = get_parent().get_parent().get_parent().get_parent().get_node("PlayerHealthbar")
+		health_bar = get_parent().get_parent().get_parent().get_parent().get_node("CanvasLayer/PlayerHealthbar")
 	else:
-		health_bar = get_parent().get_parent().get_parent().get_parent().get_node("OpponentHealthbar")
+		health_bar = get_parent().get_parent().get_parent().get_parent().get_node("CanvasLayer/OpponentHealthbar")
 
 	# Initialize if it exists
 	if health_bar:

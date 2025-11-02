@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ce3xngesk7jhm" path="res://buildings/water_pump.tscn" id="1_bb7dw"]
 [ext_resource type="Script" uid="uid://bsesgdbmuhudn" path="res://cards/card.gd" id="1_sg8sj"]
 [ext_resource type="Texture2D" uid="uid://bvlj40gpqyi1w" path="res://Assets/cards/Card-back-temp.png" id="2_jgl5r"]
-[ext_resource type="Texture2D" uid="uid://bcxysl0curayw" path="res://Assets/cards/Card-front1-temp.png" id="3_bb7dw"]
+[ext_resource type="Texture2D" uid="uid://b6c3o4vm5xw52" path="res://Assets/cards/Water pump Card.png" id="4_bb7dw"]
 
 [resource]
 script = ExtResource("1_sg8sj")
@@ -11,7 +11,7 @@ id = 1
 name = "Water Pump"
 description = "fasasf"
 type = "Building"
-texture_face_up = ExtResource("3_bb7dw")
+texture_face_up = ExtResource("4_bb7dw")
 texture_face_down = ExtResource("2_jgl5r")
 cost = 3
 card_frequency = 3

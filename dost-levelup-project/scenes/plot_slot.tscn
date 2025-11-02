@@ -9,14 +9,15 @@ custom_minimum_size = Vector2(64, 64)
 anchors_preset = -1
 anchor_right = 0.003
 anchor_bottom = 0.005
-offset_right = 28.544
-offset_bottom = 28.76
-scale = Vector2(0.1, 0.1)
+offset_right = 140.544
+offset_bottom = 83.76
+scale = Vector2(0.05, 0.05)
 mouse_filter = 1
 texture_normal = ExtResource("1_7c8nn")
 script = ExtResource("1_4dmsh")
 
 [node name="PanelContainer" parent="." instance=ExtResource("3_7c8nn")]
+visible = false
 layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
