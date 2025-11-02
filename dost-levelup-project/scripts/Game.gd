@@ -3,9 +3,9 @@ extends Control
 # Game.gd - manages card display, selection, and building placement
 # Uses CardSlot functions properly for card display and selection
 
-@onready var player_cards = $PlayerCards
-@onready var opponent_cards = $OpponentCards
-@onready var timer_label = $Label
+@onready var player_cards = $CanvasLayer/PlayerCards
+@onready var opponent_cards = $CanvasLayer/OpponentCards
+@onready var timer_label = $CanvasLayer/Label
 var local_hand: Hand = null
 var card_pool_meta := {}
 var revealed_cards := {} # peer_id -> { slot_index: card_id }
@@ -13,6 +13,7 @@ var selected_card_id = null
 var selected_card_slot_index = null
 var seconds_passed = 0
 @export var card_reveal_duration := 1.0 # Duration in seconds to show revealed cards
+var game_timer: Timer = null
 
 func _ready():
 	# Inform the authoritative server that this client finished loading the Game scene.
@@ -25,6 +26,18 @@ func _ready():
 	_clear_card_holders()
 	# Connect plot slots so player can tap to place buildings
 	_connect_plot_slots()
+	# Start the game timer
+	_start_game_timer()
+
+func _start_game_timer() -> void:
+	# Create and configure timer
+	game_timer = Timer.new()
+	game_timer.wait_time = 1.0  # 1 second
+	game_timer.one_shot = false  # Repeat
+	add_child(game_timer)
+	game_timer.timeout.connect(_on_timer_timeout)
+	game_timer.start()
+	print("[Game] Timer started")
 
 func _clear_card_holders():
 	# Do not free slot nodes. Instead deactivate the item display inside each
@@ -154,7 +167,7 @@ func _connect_plot_slots() -> void:
 		# bind them with their index [0,0 to 4,4]
 		print("Asads")
 		if btn:
-			var plot_idx = [int(i % 5), int(i / 5.0)] # assuming 5x5 grid
+			var plot_idx = [int(i % 5), int(i / 5)] # assuming 5x5 grid
 			btn.set_plot_index(plot_idx)
 			btn.current_building = null
 			btn.board_owner = "player"
@@ -168,7 +181,7 @@ func _connect_plot_slots() -> void:
 		# bind them with their index [0,0 to 4,4]
 		print("Asads")
 		if btn:
-			var plot_idx = [int(i % 5), int(i / 5.0)] # assuming 5x5 grid
+			var plot_idx = [int(i % 5), int(i / 5)] # assuming 5x5 grid
 			btn.set_plot_index(plot_idx)
 			btn.current_building = null
 			btn.board_owner = "opponent"
@@ -181,7 +194,7 @@ func _on_plot_pressed(idx, btn) -> void:
 	if not player_cards.current_selected_type == "Building":
 		print("not a building lols")
 		return
-		
+
 	print("asdakdjadja")
 	var plot_index = idx
 	if player_cards.current_selected == -1:
@@ -213,17 +226,13 @@ func _on_plot_pressed(idx, btn) -> void:
 		var node = layout.get_child(player_cards.current_selected)
 		node.call_deferred("set_selected", false)
 	# schedule replacement
-	# if this is the first card used, it likely already got replaced, so skip this
-	await get_tree().create_timer(0.2).timeout
-	if local_hand.slots[player_cards.current_selected].item != null:
-		return
 	var timer = get_tree().create_timer(3.0)
 	timer.timeout.connect(_replace_card.bind(player_cards.current_selected))
 	_populate_card_holder(player_cards, [], true)
 	player_cards.deselect_other_slots(-1)
 	selected_card_id = null
 
-func _on_enemy_plot_pressed(idx, _btn) -> void:
+func _on_enemy_plot_pressed(idx, btn) -> void:
 	if not player_cards.current_selected_type == "Disaster":
 		print("not a disaster lols")
 		return
@@ -274,6 +283,10 @@ func _get_opponent_peer_id() -> int:
 
 @rpc("any_peer", "reliable")
 func rpc_receive_private_hand(hand: Array):
+	# The server will send the array of card ids to the owning client
+	# For each id we will try to load a Card resource (res://cards/card_<id>.tres)
+	# and instantiate a card slot for it so the card graphic appears.
+	# Build a Hand resource instance from the playerhand template and the received ids
 	var template = ResourceLoader.load("res://cards/playerhand.tres")
 	if template:
 		# deep duplicate so we can modify slots safely
@@ -319,7 +332,7 @@ func _populate_card_holder(container: Node, _hand: Array, face_up: bool, count: 
 		layout_node = container.get_node("GridContainer")
 
 	# Determine how many slots to iterate: always prefer explicit count, otherwise 3
-	var cards_to_create = 4
+	var cards_to_create = 3
 	if count >= 0:
 		cards_to_create = count
 
@@ -369,6 +382,56 @@ func _populate_card_holder(container: Node, _hand: Array, face_up: bool, count: 
 				itemDisplay.visible = true
 			else:
 				itemDisplay.visible = false
+		else:
+			# Opponent or face-down: show a card-back texture if available
+			var itemDisplay2 = slot_node.get_node("CenterContainer/Panel/itemDisplay")
+			var back_tex: Texture2D = null
+			# Try to use card_pool_meta first
+			if card_pool_meta.size() > 0:
+				var first_key = card_pool_meta.keys()[0]
+				var back_path = card_pool_meta[first_key]["path"]
+				if ResourceLoader.exists(back_path):
+					var back_res = ResourceLoader.load(back_path)
+					if back_res and back_res.texture_face_down != null:
+						back_tex = back_res.texture_face_down
+					elif back_res and back_res.texture_face_up != null:
+						back_tex = back_res.texture_face_up
+			# Fallback to card_1
+			# Prefer explicit Network.card_back if set
+			if back_tex == null and Network and Network.card_back != null:
+				back_tex = Network.card_back
+			# Fallback to card_1 resource
+			if back_tex == null and ResourceLoader.exists("res://cards/card_1.tres"):
+				var fb = ResourceLoader.load("res://cards/card_1.tres")
+				if fb and fb.texture_face_down != null:
+					back_tex = fb.texture_face_down
+				elif fb and fb.texture_face_up != null:
+					back_tex = fb.texture_face_up
+			# If this opponent slot has been revealed, show the revealed card face-up
+			var my_id = multiplayer.get_unique_id()
+			# Assume a single-opponent layout; find the peer id of the opponent if available
+			var revealed_card_id = null
+			for raw_key in revealed_cards.keys():
+				var pid = int(raw_key)
+				if pid != my_id:
+					var map = revealed_cards[raw_key]
+					if map.has(i):
+						revealed_card_id = map[i]
+						break
+			if revealed_card_id != null:
+				var res_path = "res://cards/card_%d.tres" % int(revealed_card_id)
+				if ResourceLoader.exists(res_path):
+					var card_res = ResourceLoader.load(res_path)
+					if card_res and card_res.texture_face_up != null:
+						itemDisplay2.texture = card_res.texture_face_up
+						itemDisplay2.visible = true
+						continue
+			# No reveal for this slot: show back texture if available
+			if back_tex != null:
+				itemDisplay2.texture = back_tex
+				itemDisplay2.visible = true
+			else:
+				itemDisplay2.visible = false
 
 
 @rpc("any_peer", "reliable")
@@ -413,7 +476,7 @@ func rpc_update_energies(energies: Dictionary) -> void:
 				opp_energy = val
 
 	if my_energy != null and has_node("PlayerEnergy"):
-		$PlayerEnergy.text = str(my_energy)
+		$PlayerEnergy.text = "Energy: " + str(my_energy)
 	if opp_energy != null and has_node("OpponentEnergy"):
 		$OpponentEnergy.text = "Energy: " + str(opp_energy)
 
@@ -479,30 +542,22 @@ func rpc_place_building(owner_peer_id: int, plot_index, card_id: int) -> void:
 		var btn = container.get_child(i)
 		if not btn:
 			continue
-		var plot_idx = [int(i % 5), int(i / 5.0)]
+		var plot_idx = [int(i % 5), int(i / 5)]
 		if plot_idx.size() == plot_index.size() and int(plot_idx[0]) == int(plot_index[0]) and int(plot_idx[1]) == int(plot_index[1]):
 			var building_instance = building_scene.instantiate()
 			btn.add_child(building_instance)
-			# Center the building within the plot button's rect, with optional per-building tweak.
-			# Many art assets are not visually centered; allow an exported pivot_offset on the building root.
-			if "size" in btn:
-				var center: Vector2 = btn.size * 0.5
-				if "pivot_offset" in building_instance:
-					center += building_instance.pivot_offset
-				building_instance.position = center
 			btn.current_building = card_id
 			btn.is_occupied = true
 			btn.building_scene = building_instance
 			btn.building_scene.plot_index = plot_idx
-			print("Placed building for owner %d at %s (btn idx %d)" % [owner_peer_id, str(plot_index), i])
-			if card_id == 0:
-				print("Smart Center placed")
-				Network.request_full_hand_draw(owner_peer_id)
+			# Center the building visually within the plot slot (uses Pivot or exported placement_offset if available)
+			_align_building_on_plot(btn, building_instance)
+			print("[Game] Placed building for owner %d at %s (btn idx %d)" % [owner_peer_id, str(plot_index), i])
 			break
 
 @rpc("any_peer", "reliable")
 func rpc_use_disaster(owner_peer_id: int, plot_index, card_id: int) -> void:
-	print("Disaster triggered by %d at plot %s" % [owner_peer_id, str(plot_index)])
+	print("[Game] Disaster triggered by %d at plot %s" % [owner_peer_id, str(plot_index)])
 
 	var root = get_tree().get_current_scene()
 	if not root:
@@ -544,7 +599,7 @@ func rpc_use_disaster(owner_peer_id: int, plot_index, card_id: int) -> void:
 		if not btn:
 			continue
 			
-		var plot_idx = [int(i % 5), int(i / 5.0)]
+		var plot_idx = [int(i % 5), int(i / 5)]
 		# element-wise compare to support arrays
 		if plot_idx.size() == plot_index.size() and int(plot_idx[0]) == int(plot_index[0]) and int(plot_idx[1]) == int(plot_index[1]):
 			var disaster_instance = disaster_scene.instantiate()
@@ -553,8 +608,34 @@ func rpc_use_disaster(owner_peer_id: int, plot_index, card_id: int) -> void:
 			print("lol disaster go boogsh")
 			break
 
+# Helper: align a Node2D building inside a Control plot button so it appears centered
+func _align_building_on_plot(plot_btn: Control, building: Node) -> void:
+	if plot_btn == null or building == null:
+		return
+	# Determine the local center of the plot button (Control uses size)
+	var center := Vector2.ZERO
+	if "size" in plot_btn:
+		center = plot_btn.size * 0.5
+	else:
+		# Fallback: try rect_size (older APIs)
+		center = plot_btn.get_rect().size * 0.5 if plot_btn.has_method("get_rect") else Vector2.ZERO
+
+	var offset := Vector2.ZERO
+	# If the building provides a Pivot node, align that to the center
+	var pivot: Node = building.get_node_or_null("Pivot")
+	if pivot and pivot is Node2D:
+		offset = -(pivot as Node2D).position
+	# Else, if the building exposes an exported placement_offset, use it
+	elif "placement_offset" in building:
+		offset = building.placement_offset
+
+	# Apply final local position
+	if "position" in building:
+		building.position = center + offset
+
 func _on_timer_timeout():
 	seconds_passed += 1
-	var minutes = int(seconds_passed / 60.0)
+	@warning_ignore("integer_division")
+	var minutes = seconds_passed / 60
 	var seconds = seconds_passed % 60
 	timer_label.text = "Time: %02d:%02d" % [minutes, seconds]

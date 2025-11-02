@@ -16,26 +16,41 @@ func _ready() -> void:
 	if not hover:
 		push_error("Plot slot is missing PanelContainer for hover!")
 		return
-		
+	
+	# Make sure mouse filter is set to PASS so hover works on entire button
+	mouse_filter = Control.MOUSE_FILTER_PASS
+	
 	# Connect mouse signals
-	mouse_entered.connect(on_mouse_entered)
-	mouse_exited.connect(on_mouse_exited)
+	if not mouse_entered.is_connected(on_mouse_entered):
+		mouse_entered.connect(on_mouse_entered)
+	if not mouse_exited.is_connected(on_mouse_exited):
+		mouse_exited.connect(on_mouse_exited)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _hovering and building_scene and is_instance_valid(building_scene):
 		_update_hover_labels()
+
+func _gui_input(event: InputEvent) -> void:
+	# Additional hover detection for the entire button area
+	if event is InputEventMouseMotion:
+		if not _hovering and building_scene and is_occupied and is_instance_valid(building_scene):
+			on_mouse_entered()
 
 func on_mouse_entered() -> void:
 	if hover and building_scene and is_occupied and is_instance_valid(building_scene):
 		_hovering = true
 		# Update immediately and show
 		_update_hover_labels()
-		hover.show()  # or hover.toggle(true) depending on your implementation
+		hover.toggle(true)
+		print("[PlotSlot] Mouse entered plot with building: ", building_scene.name)
+	elif not building_scene or not is_occupied:
+		print("[PlotSlot] Mouse entered empty plot")
 
 func on_mouse_exited() -> void:
 	_hovering = false
 	if hover:
-		hover.hide()  # or hover.toggle(false)
+		hover.toggle(false)
+		print("[PlotSlot] Mouse exited plot")
 
 func _update_hover_labels() -> void:
 	# safe checks for nodes
@@ -66,13 +81,18 @@ func _update_hover_labels() -> void:
 		}
 
 	if hover.has_node("VBoxContainer/FireLabel"):
-		hover.get_node("VBoxContainer/FireLabel").text = "Fire: %s" % str(res.get("fire", "N/A"))
+		var fire_val = res.get("fire", 1.0)
+		# Convert resistance: 1.0 = 0% resistance, 0.0 = 100% resistance
+		hover.get_node("VBoxContainer/FireLabel").text = "Fire Res: %.0f%%" % ((1.0 - fire_val) * 100.0)
 	if hover.has_node("VBoxContainer/WindLabel"):
-		hover.get_node("VBoxContainer/WindLabel").text = "Wind: %s" % str(res.get("wind", "N/A"))
+		var wind_val = res.get("wind", 1.0)
+		hover.get_node("VBoxContainer/WindLabel").text = "Wind Res: %.0f%%" % ((1.0 - wind_val) * 100.0)
 	if hover.has_node("VBoxContainer/WaterLabel"):
-		hover.get_node("VBoxContainer/WaterLabel").text = "Water: %s" % str(res.get("water", "N/A"))
+		var water_val = res.get("water", 1.0)
+		hover.get_node("VBoxContainer/WaterLabel").text = "Water Res: %.0f%%" % ((1.0 - water_val) * 100.0)
 	if hover.has_node("VBoxContainer/SturdinessLabel"):
-		hover.get_node("VBoxContainer/SturdinessLabel").text = "Sturdiness: %s" % str(res.get("sturdiness", "N/A"))
+		var sturdy_val = res.get("sturdiness", 1.0)
+		hover.get_node("VBoxContainer/SturdinessLabel").text = "Quake Res: %.0f%%" % ((1.0 - sturdy_val) * 100.0)
 
 func check_occupied():
 	return is_occupied
