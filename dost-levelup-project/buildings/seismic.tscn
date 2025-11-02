@@ -297,26 +297,25 @@ _data = {
 
 [node name="Seismic" type="AnimatedSprite2D" groups=["buildings"]]
 position = Vector2(16, 10)
-scale = Vector2(0.328125, 0.328125)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 animation = &"off"
 autoplay = "default"
-frame_progress = 0.118855
+frame_progress = 0.0312811
+offset = Vector2(0.1, -38.57)
 script = ExtResource("3_2xrxg")
 damage_popup_scene = ExtResource("4_r2lyu")
 
 [node name="Healthbar" parent="." instance=ExtResource("5_3g6ty")]
-offset_left = -27.4286
-offset_top = 45.7143
-offset_right = 28.5714
-offset_bottom = 105.714
+offset_left = -14.0
+offset_top = 15.0
+offset_right = 42.0
+offset_bottom = 74.9997
 
 [node name="Inactive" type="Label" parent="."]
-visible = false
-offset_left = -39.8222
-offset_top = -67.2914
-offset_right = 40.1778
-offset_bottom = -39.2914
+offset_left = -26.0
+offset_top = -83.0
+offset_right = 54.0
+offset_bottom = -55.0
 theme_override_fonts/font = ExtResource("6_iglc6")
 theme_override_font_sizes/font_size = 16
 text = "Inactive"

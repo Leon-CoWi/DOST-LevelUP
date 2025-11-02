@@ -197,16 +197,16 @@ sprite_frames = SubResource("SpriteFrames_3mswn")
 animation = &"new_animation"
 autoplay = "new_animation"
 frame_progress = 0.914872
-offset = Vector2(-2.825, -45.78)
+offset = Vector2(0.21, -38.83)
 script = ExtResource("2_mu1yq")
 damage_popup_scene = ExtResource("3_sunpn")
 
 [node name="Inactive" type="Label" parent="."]
 visible = false
-offset_left = -39.8222
-offset_top = -67.2914
-offset_right = 40.1778
-offset_bottom = -39.2914
+offset_left = -25.922
+offset_top = -66.246
+offset_right = 54.078
+offset_bottom = -38.246
 theme_override_fonts/font = ExtResource("4_gmpt7")
 theme_override_font_sizes/font_size = 16
 text = "Inactive"
@@ -218,7 +218,7 @@ libraries = {
 autoplay = "new_animation"
 
 [node name="Healthbar" parent="." instance=ExtResource("5_flf8o")]
-offset_left = -21.3333
-offset_top = 15.2381
-offset_right = 34.6667
-offset_bottom = 75.2382
+offset_left = -10.713
+offset_top = 12.463
+offset_right = 45.287
+offset_bottom = 72.4631

@@ -122,20 +122,20 @@ _data = {
 
 [node name="Smart Center" type="AnimatedSprite2D" groups=["buildings"]]
 position = Vector2(16, 10)
-scale = Vector2(0.328125, 0.328125)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 animation = &"new_animation"
 autoplay = "new_animation"
 frame_progress = 0.724684
+offset = Vector2(-0.055, -35.74)
 script = ExtResource("2_6w21x")
 damage_popup_scene = ExtResource("3_6naqn")
 
 [node name="Inactive" type="Label" parent="."]
 visible = false
-offset_left = -39.8222
-offset_top = -67.2914
-offset_right = 40.1778
-offset_bottom = -39.2914
+offset_left = -23.567
+offset_top = -84.706
+offset_right = 56.433
+offset_bottom = -56.706
 theme_override_fonts/font = ExtResource("5_po0o0")
 theme_override_font_sizes/font_size = 16
 text = "Inactive"
