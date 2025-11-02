@@ -144,3 +144,12 @@ func repair_building(amount: int) -> void:
 
 	hp = min(max_hp, hp + amount)
 	health_bar.value = hp
+
+func get_resistances() -> Dictionary:
+	# return the current resistance values used by your buildings
+	return {
+		"fire": fire_resistance,
+		"wind": wind_resistance,
+		"water": water_resistance,
+		"sturdiness": sturdiness
+	}
