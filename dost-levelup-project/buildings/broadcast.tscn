@@ -331,9 +331,9 @@ _data = {
 
 [node name="Broadcast" type="AnimatedSprite2D" groups=["buildings"]]
 position = Vector2(16, 10)
-scale = Vector2(0.328125, 0.328125)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 autoplay = "default"
+offset = Vector2(-2.825, -45.78)
 script = ExtResource("2_w3seh")
 damage_popup_scene = ExtResource("3_fgu50")
 
@@ -354,7 +354,7 @@ libraries = {
 autoplay = "new_animation"
 
 [node name="Healthbar" parent="." instance=ExtResource("4_a811v")]
-offset_left = -24.381
-offset_top = 48.7619
-offset_right = 31.619
-offset_bottom = 108.762
+offset_left = -21.3333
+offset_top = 15.2381
+offset_right = 34.6667
+offset_bottom = 75.2382

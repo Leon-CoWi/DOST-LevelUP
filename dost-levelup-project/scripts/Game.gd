@@ -154,7 +154,7 @@ func _connect_plot_slots() -> void:
 		# bind them with their index [0,0 to 4,4]
 		print("Asads")
 		if btn:
-			var plot_idx = [int(i % 5), int(i / 5)] # assuming 5x5 grid
+			var plot_idx = [int(i % 5), int(i / 5.0)] # assuming 5x5 grid
 			btn.set_plot_index(plot_idx)
 			btn.current_building = null
 			btn.board_owner = "player"
@@ -168,7 +168,7 @@ func _connect_plot_slots() -> void:
 		# bind them with their index [0,0 to 4,4]
 		print("Asads")
 		if btn:
-			var plot_idx = [int(i % 5), int(i / 5)] # assuming 5x5 grid
+			var plot_idx = [int(i % 5), int(i / 5.0)] # assuming 5x5 grid
 			btn.set_plot_index(plot_idx)
 			btn.current_building = null
 			btn.board_owner = "opponent"
@@ -219,7 +219,7 @@ func _on_plot_pressed(idx, btn) -> void:
 	player_cards.deselect_other_slots(-1)
 	selected_card_id = null
 
-func _on_enemy_plot_pressed(idx, btn) -> void:
+func _on_enemy_plot_pressed(idx, _btn) -> void:
 	if not player_cards.current_selected_type == "Disaster":
 		print("not a disaster lols")
 		return
@@ -529,10 +529,17 @@ func rpc_place_building(owner_peer_id: int, plot_index, card_id: int) -> void:
 		var btn = container.get_child(i)
 		if not btn:
 			continue
-		var plot_idx = [int(i % 5), int(i / 5)]
+		var plot_idx = [int(i % 5), int(i / 5.0)]
 		if plot_idx.size() == plot_index.size() and int(plot_idx[0]) == int(plot_index[0]) and int(plot_idx[1]) == int(plot_index[1]):
 			var building_instance = building_scene.instantiate()
 			btn.add_child(building_instance)
+			# Center the building within the plot button's rect, with optional per-building tweak.
+			# Many art assets are not visually centered; allow an exported pivot_offset on the building root.
+			if "size" in btn:
+				var center: Vector2 = btn.size * 0.5
+				if "pivot_offset" in building_instance:
+					center += building_instance.pivot_offset
+				building_instance.position = center
 			btn.current_building = card_id
 			btn.is_occupied = true
 			btn.building_scene = building_instance
@@ -584,7 +591,7 @@ func rpc_use_disaster(owner_peer_id: int, plot_index, card_id: int) -> void:
 		if not btn:
 			continue
 			
-		var plot_idx = [int(i % 5), int(i / 5)]
+		var plot_idx = [int(i % 5), int(i / 5.0)]
 		# element-wise compare to support arrays
 		if plot_idx.size() == plot_index.size() and int(plot_idx[0]) == int(plot_index[0]) and int(plot_idx[1]) == int(plot_index[1]):
 			var disaster_instance = disaster_scene.instantiate()
@@ -595,6 +602,6 @@ func rpc_use_disaster(owner_peer_id: int, plot_index, card_id: int) -> void:
 
 func _on_timer_timeout():
 	seconds_passed += 1
-	var minutes = seconds_passed / 60
+	var minutes = int(seconds_passed / 60.0)
 	var seconds = seconds_passed % 60
 	timer_label.text = "Time: %02d:%02d" % [minutes, seconds]
