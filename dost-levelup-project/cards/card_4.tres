@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Card" load_steps=5 format=3 uid="uid://culm7pd361763"]
+
+[ext_resource type="PackedScene" uid="uid://bcwrdnedjxoxu" path="res://buildings/sandbag_warehouse.tscn" id="1_l4glh"]
+[ext_resource type="Script" uid="uid://bsesgdbmuhudn" path="res://cards/card.gd" id="2_lpekv"]
+[ext_resource type="Texture2D" uid="uid://bvlj40gpqyi1w" path="res://Assets/cards/Card-back-temp.png" id="3_njpcb"]
+[ext_resource type="Texture2D" uid="uid://d0xguuj3etkac" path="res://Assets/UI/HP-EMPTY.png" id="4_l4glh"]
+
+[resource]
+script = ExtResource("2_lpekv")
+id = 4
+name = "Sandbag Warehouse"
+description = ""
+type = "Building"
+texture_face_up = ExtResource("4_l4glh")
+texture_face_down = ExtResource("3_njpcb")
+cost = 2
+card_frequency = 0
+building_scene = ExtResource("1_l4glh")
+metadata/_custom_type_script = "uid://bsesgdbmuhudn"

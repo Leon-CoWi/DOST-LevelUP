@@ -2,11 +2,11 @@ extends Building
 
 class_name SeismicReinforcementLab
 
-var _buffed_positions = []
-const EARTH_BUFF = 0.5
+var cooldown_timer = 0.0
+var effect_interval = 20.0
 
-func _ready():
-	max_hp = 150
+func init_stats():
+	max_hp = 170
 	hp = max_hp
 	# Stored values are "vulnerability": 1.0 = full damage taken, 0.0 = immune.
 	# So sturdiness = 0.7 means actual protection = 30%.
@@ -18,5 +18,29 @@ func _ready():
 	production_rate = 0
 	energy_consumption = 10
 
-func _process(delta):
-	pass
+func trigger_effect(delta):
+	#for each adjacent plot every 20 seconds, increase their wind resistance by 0.02 (up to a max of 0.3)
+	cooldown_timer += delta
+	if cooldown_timer >= effect_interval:
+		cooldown_timer = 0.0
+		show_increase()
+		var adjacent = get_parent().adjacent_plot_indices 
+		var parent_node = get_parent().get_parent().get_parent()
+		for adj_index in adjacent:
+			var tile = parent_node.get_tile_at(adj_index)
+			if tile and tile.is_occupied and tile.building_scene:
+				tile.building_scene.wind_resistance = max(tile.building_scene.wind_resistance - 0.02, 0.3)
+				
+
+func show_increase() -> void:
+	print("repairing")
+	if inactive:
+		return
+	
+	popup = damage_popup_scene.instantiate()
+	get_tree().current_scene.add_child(popup)
+	popup.get_node("Label").add_theme_color_override("font_color", Color(173, 216, 230))
+	#reduce size to 32
+	popup.get_node("Label").add_theme_font_size_override("font_size", 48)
+	var jitter_x := randf_range(-6, 6)
+	popup.show_text("Wind W. Res++", global_position + Vector2(jitter_x, -20))

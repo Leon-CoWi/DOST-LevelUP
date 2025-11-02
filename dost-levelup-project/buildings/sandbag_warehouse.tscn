@@ -1,0 +1,182 @@
+[gd_scene load_steps=24 format=3 uid="uid://bcwrdnedjxoxu"]
+
+[ext_resource type="Texture2D" uid="uid://das7waunnri5x" path="res://Assets/buildings/sandbag-warehouse.png" id="1_0hmwf"]
+[ext_resource type="Script" uid="uid://bef1wwtgalpe0" path="res://buildings/sandbag_warehouse.gd" id="2_51hct"]
+[ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="3_4y8nc"]
+[ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://UI/Damage/damage_popup.tscn" id="3_51hct"]
+[ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://UI/Healthbar/healthbar-building.tscn" id="4_5k5wv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4y8nc"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k5wv"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3y25"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mhdk"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejqkf"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhxt7"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68fyr"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5v5h"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf88e"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0opp"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uj3hx"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrdcm"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4pi6"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihuxr"]
+atlas = ExtResource("1_0hmwf")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3mswn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4y8nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k5wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3y25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mhdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejqkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhxt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68fyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5v5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf88e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0opp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uj3hx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrdcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4pi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihuxr")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_7rem7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-39.8222, -67.2914)]
+}
+
+[sub_resource type="Animation" id="Animation_53jov"]
+resource_name = "new_animation"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-39.8222, -67.2914), Vector2(-39.8221, -84.8457)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7xf2m"]
+_data = {
+&"RESET": SubResource("Animation_7rem7"),
+&"new_animation": SubResource("Animation_53jov")
+}
+
+[node name="Sandbag Warehouse" type="AnimatedSprite2D" groups=["buildings"]]
+position = Vector2(16, 10)
+sprite_frames = SubResource("SpriteFrames_3mswn")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.736063
+offset = Vector2(-2.825, -45.78)
+script = ExtResource("2_51hct")
+damage_popup_scene = ExtResource("3_51hct")
+
+[node name="Inactive" type="Label" parent="."]
+visible = false
+offset_left = -39.8222
+offset_top = -67.2914
+offset_right = 40.1778
+offset_bottom = -39.2914
+theme_override_fonts/font = ExtResource("3_4y8nc")
+theme_override_font_sizes/font_size = 16
+text = "Inactive"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Inactive"]
+libraries = {
+&"": SubResource("AnimationLibrary_7xf2m")
+}
+autoplay = "new_animation"
+
+[node name="Healthbar" parent="." instance=ExtResource("4_5k5wv")]
+offset_left = -28.0
+offset_top = 3.0
+offset_right = 28.0
+offset_bottom = 63.0001

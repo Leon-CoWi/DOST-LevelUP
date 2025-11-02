@@ -1,8 +1,9 @@
-[gd_scene load_steps=44 format=3 uid="uid://bcaf0r8eajc88"]
+[gd_scene load_steps=45 format=3 uid="uid://bcaf0r8eajc88"]
 
 [ext_resource type="Texture2D" uid="uid://8q6r1p7b1415" path="res://Assets/buildings/WaterPump_Station.png" id="1_r2lyu"]
 [ext_resource type="Texture2D" uid="uid://s4shc0twl5ds" path="res://Assets/buildings/seismic-reinforcement-lab.png" id="2_r2lyu"]
 [ext_resource type="Script" uid="uid://c1ctbg7s0jd71" path="res://buildings/seismic_reinforcement_lab.gd" id="3_2xrxg"]
+[ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://UI/Damage/damage_popup.tscn" id="4_r2lyu"]
 [ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://UI/Healthbar/healthbar-building.tscn" id="5_3g6ty"]
 [ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="6_iglc6"]
 
@@ -302,6 +303,7 @@ animation = &"off"
 autoplay = "default"
 frame_progress = 0.118855
 script = ExtResource("3_2xrxg")
+damage_popup_scene = ExtResource("4_r2lyu")
 
 [node name="Healthbar" parent="." instance=ExtResource("5_3g6ty")]
 offset_left = -27.4286

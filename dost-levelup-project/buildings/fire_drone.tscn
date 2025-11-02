@@ -1,0 +1,224 @@
+[gd_scene load_steps=30 format=3 uid="uid://dvvn8ljknklqq"]
+
+[ext_resource type="Texture2D" uid="uid://db5ik4mqvjaa7" path="res://Assets/buildings/drone-hangar.png" id="1_7maqd"]
+[ext_resource type="Script" uid="uid://ssykjbvy2vmv" path="res://buildings/fire_drone_hangar.gd" id="2_mu1yq"]
+[ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://UI/Damage/damage_popup.tscn" id="3_sunpn"]
+[ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="4_gmpt7"]
+[ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://UI/Healthbar/healthbar-building.tscn" id="5_flf8o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jew76"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sunpn"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmpt7"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flf8o"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eapo"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkkyd"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiroh"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibpdk"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq84o"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv0k2"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_no015"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxjo5"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7pjh"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0lta"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrm58"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(768, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ta0i"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(896, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypqi2"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81em0"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgu5e"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1dfn"]
+atlas = ExtResource("1_7maqd")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3mswn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jew76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sunpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmpt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flf8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eapo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkkyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tiroh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibpdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq84o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv0k2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_no015")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxjo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7pjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0lta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrm58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ta0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypqi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81em0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgu5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1dfn")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_7rem7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-39.8222, -67.2914)]
+}
+
+[sub_resource type="Animation" id="Animation_53jov"]
+resource_name = "new_animation"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-39.8222, -67.2914), Vector2(-39.8221, -84.8457)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7xf2m"]
+_data = {
+&"RESET": SubResource("Animation_7rem7"),
+&"new_animation": SubResource("Animation_53jov")
+}
+
+[node name="Fire Drone Hangar" type="AnimatedSprite2D" groups=["buildings"]]
+position = Vector2(16, 10)
+sprite_frames = SubResource("SpriteFrames_3mswn")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.914872
+offset = Vector2(-2.825, -45.78)
+script = ExtResource("2_mu1yq")
+damage_popup_scene = ExtResource("3_sunpn")
+
+[node name="Inactive" type="Label" parent="."]
+visible = false
+offset_left = -39.8222
+offset_top = -67.2914
+offset_right = 40.1778
+offset_bottom = -39.2914
+theme_override_fonts/font = ExtResource("4_gmpt7")
+theme_override_font_sizes/font_size = 16
+text = "Inactive"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Inactive"]
+libraries = {
+&"": SubResource("AnimationLibrary_7xf2m")
+}
+autoplay = "new_animation"
+
+[node name="Healthbar" parent="." instance=ExtResource("5_flf8o")]
+offset_left = -21.3333
+offset_top = 15.2381
+offset_right = 34.6667
+offset_bottom = 75.2382

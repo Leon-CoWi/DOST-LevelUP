@@ -155,6 +155,28 @@ func trigger_disaster(card_id: int, disaster_instance):
 					sync_tornado_roll(roll, new_index)
 				else:
 					return
+			13: #toxic surge, damage to one tile and reduce all res by 10%, and then slowly spread to the other adjacent tiles reducing their res by 5%
+				await get_tree().create_timer(0.8).timeout
+				var parent_node = get_parent().get_parent()
+				if is_occupied and building_scene:
+					building_scene.take_damage(15, "water")
+					building_scene.fire_resistance = 1 if building_scene.fire_resistance + 0.1 > 1.0 else building_scene.fire_resistance + 0.1
+					building_scene.wind_resistance = 1 if building_scene.wind_resistance + 0.1 > 1.0 else building_scene.wind_resistance + 0.1
+					building_scene.water_resistance = 1 if building_scene.water_resistance + 0.1 > 1.0 else building_scene.water_resistance + 0.1
+					building_scene.sturdiness = 1 if building_scene.sturdiness + 0.1 > 1.0 else building_scene.sturdiness + 0.1
+				await get_tree().create_timer(0.8).timeout
+				for adj_index in adjacent_plot_indices:
+					var tile = parent_node.get_tile_at(adj_index)
+					if tile and tile.is_occupied and tile.building_scene:
+						var card_res = ResourceLoader.load("res://cards/card_13.tres")
+						var disaster_scene = card_res.disaster_scene
+						var d_i = disaster_scene.instantiate()
+						tile.add_child(d_i)
+						tile.building_scene.take_damage(7.5, "water")
+						tile.building_scene.fire_resistance = 1 if tile.building_scene.fire_resistance + 0.05 > 1.0 else tile.building_scene.fire_resistance + 0.05
+						tile.building_scene.wind_resistance = 1 if tile.building_scene.wind_resistance + 0.05 > 1.0 else tile.building_scene.wind_resistance + 0.05
+						tile.building_scene.water_resistance = 1 if tile.building_scene.water_resistance + 0.05 > 1.0 else tile.building_scene.water_resistance + 0.05
+						tile.building_scene.sturdiness = 1 if tile.building_scene.sturdiness + 0.05 > 1.0 else tile.building_scene.sturdiness + 0.05
 
 
 @rpc("reliable")

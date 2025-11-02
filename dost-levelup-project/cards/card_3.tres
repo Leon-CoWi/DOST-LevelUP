@@ -8,12 +8,12 @@
 [resource]
 script = ExtResource("1_u61x4")
 id = 3
-name = ""
+name = "Broadcast Tower"
 description = ""
 type = "Building"
 texture_face_up = ExtResource("4_fdoyj")
 texture_face_down = ExtResource("3_6j1m8")
-cost = 2
+cost = 4
 card_frequency = 0
 building_scene = ExtResource("1_dwjdt")
 metadata/_custom_type_script = "uid://bsesgdbmuhudn"

@@ -21,7 +21,7 @@ var player_energy := {} # peer_id -> int (server-authoritative energy values)
 var energy_rate:= 2
 var _energy_timer: Timer = null
 var card_pool := {} # id -> {path: String, name: String, frequency: int}
-@export var available_card_ids: Array = [1,2,3,9, 10, 11, 12] # list of card ids the server can draw from (set in inspector or code)
+@export var available_card_ids: Array = [1,2,3,4,5,6,9, 10, 11, 12, 13] # list of card ids the server can draw from (set in inspector or code)
 @export var card_back: Texture2D = null # optional explicit card back texture used for opponents
 
 # Programmatic helpers to control the available card pool at runtime

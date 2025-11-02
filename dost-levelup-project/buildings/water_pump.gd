@@ -26,7 +26,7 @@ func trigger_effect(delta):
 		for adj_index in adjacent:
 			var tile = parent_node.get_tile_at(adj_index)
 			if tile and tile.is_occupied and tile.building_scene:
-				tile.building_scene.water_resistance = max(tile.building_scene.water_resistance - 0.02, 0.3)
+				tile.building_scene.fire_resistance = max(tile.building_scene.fire_resistance - 0.02, 0.3)
 				
 
 func show_increase() -> void:
@@ -37,8 +37,8 @@ func show_increase() -> void:
 	popup = damage_popup_scene.instantiate()
 	get_tree().current_scene.add_child(popup)
 	popup.get_node("Label").add_theme_color_override("font_color", Color(173, 216, 230))
-	popup.get_node("Label").self_modulate = Color(0, 0, 1)
+	popup.get_node("Label").self_modulate = Color(1, 0, 0)
 	#reduce size to 32
 	popup.get_node("Label").add_theme_font_size_override("font_size", 48)
 	var jitter_x := randf_range(-6, 6)
-	popup.show_text("Adj W. Res++", global_position + Vector2(jitter_x, -20))
+	popup.show_text("Adj F. Res++", global_position + Vector2(jitter_x, -20))
