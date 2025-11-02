@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Hand" load_steps=7 format=3 uid="uid://dqav5un0rjaor"]
+[gd_resource type="Resource" script_class="Hand" load_steps=8 format=3 uid="uid://dqav5un0rjaor"]
 
 [ext_resource type="Script" uid="uid://bxfu686h256w1" path="res://cards/Hand.gd" id="1_ef80p"]
 [ext_resource type="Script" uid="uid://ynalysw4txi0" path="res://cards/slot.gd" id="2_ef80p"]
@@ -17,7 +17,11 @@ metadata/_custom_type_script = "uid://ynalysw4txi0"
 script = ExtResource("2_ef80p")
 metadata/_custom_type_script = "uid://ynalysw4txi0"
 
+[sub_resource type="Resource" id="Resource_ef80p"]
+script = ExtResource("2_ef80p")
+metadata/_custom_type_script = "uid://ynalysw4txi0"
+
 [resource]
 script = ExtResource("1_ef80p")
-slots = Array[ExtResource("2_ef80p")]([SubResource("Resource_7uf4i"), SubResource("Resource_oqpsp"), SubResource("Resource_yrre2")])
+slots = Array[ExtResource("2_ef80p")]([SubResource("Resource_7uf4i"), SubResource("Resource_oqpsp"), SubResource("Resource_yrre2"), SubResource("Resource_ef80p")])
 metadata/_custom_type_script = "uid://bxfu686h256w1"

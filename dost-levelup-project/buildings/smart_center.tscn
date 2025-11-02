@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cs3nld6h4j6jh"]
+[gd_scene load_steps=19 format=3 uid="uid://cs3nld6h4j6jh"]
 
 [ext_resource type="Texture2D" uid="uid://0dd52n31w0en" path="res://Assets/buildings/power-backup-unit.png" id="1_6w21x"]
 [ext_resource type="Script" uid="uid://bq6qj0qqb1jiq" path="res://buildings/smart_center.gd" id="2_6w21x"]
+[ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://UI/Damage/damage_popup.tscn" id="3_6naqn"]
 [ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="5_po0o0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6naqn"]
@@ -79,7 +80,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"new_animation",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="Animation" id="Animation_7rem7"]
@@ -125,8 +126,9 @@ scale = Vector2(0.328125, 0.328125)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.672867
+frame_progress = 0.724684
 script = ExtResource("2_6w21x")
+damage_popup_scene = ExtResource("3_6naqn")
 
 [node name="Inactive" type="Label" parent="."]
 visible = false

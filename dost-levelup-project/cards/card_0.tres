@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Card" load_steps=5 format=3 uid="uid://duihrbvoqkfhg"]
+
+[ext_resource type="Script" uid="uid://bsesgdbmuhudn" path="res://cards/card.gd" id="1_4x38p"]
+[ext_resource type="PackedScene" uid="uid://cs3nld6h4j6jh" path="res://buildings/smart_center.tscn" id="1_c62cp"]
+[ext_resource type="Texture2D" uid="uid://cl2rvmmo2fye3" path="res://Assets/cards/Garage_Card.png" id="3_5sk7n"]
+[ext_resource type="Texture2D" uid="uid://bcxysl0curayw" path="res://Assets/cards/Card-front1-temp.png" id="3_35tpe"]
+
+[resource]
+script = ExtResource("1_4x38p")
+id = 0
+name = "Smart Center"
+description = ""
+type = "Building"
+texture_face_up = ExtResource("3_35tpe")
+texture_face_down = ExtResource("3_5sk7n")
+cost = 0
+card_frequency = 0
+building_scene = ExtResource("1_c62cp")
+metadata/_custom_type_script = "uid://bsesgdbmuhudn"

@@ -1,7 +1,7 @@
 extends Building
 
 var heal_timer = 0
-var heal_cooldown = 5
+var heal_cooldown = 6
 
 
 func init_stats():
@@ -31,4 +31,4 @@ func trigger_effect(delta: float) -> void:
 			print(target_index)
 			var tile = plot.get_tile_at(target_index)
 			if tile and tile.is_occupied and tile.building_scene:
-				tile.building_scene.repair_building(10)
+				tile.building_scene.repair_building(5)
