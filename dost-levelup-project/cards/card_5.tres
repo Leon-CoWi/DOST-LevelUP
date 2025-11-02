@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dvvn8ljknklqq" path="res://buildings/fire_drone.tscn" id="1_61nvg"]
 [ext_resource type="Script" uid="uid://bsesgdbmuhudn" path="res://cards/card.gd" id="2_n8sbo"]
 [ext_resource type="Texture2D" uid="uid://bvlj40gpqyi1w" path="res://Assets/cards/Card-back-temp.png" id="3_v8can"]
-[ext_resource type="Texture2D" uid="uid://65b4xdgjfe8o" path="res://Assets/UI/HP-FULL.png" id="4_61nvg"]
+[ext_resource type="Texture2D" uid="uid://bw7y2g5xsfjh2" path="res://Assets/cards/drone-hangar-card.png" id="4_61nvg"]
 
 [resource]
 script = ExtResource("2_n8sbo")

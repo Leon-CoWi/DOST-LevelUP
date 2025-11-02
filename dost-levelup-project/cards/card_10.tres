@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://b6fxm8e6dpd6r"]
+[gd_resource type="Resource" script_class="Card" load_steps=5 format=3 uid="uid://b6fxm8e6dpd6r"]
 
 [ext_resource type="PackedScene" uid="uid://d4aeb403u2h6r" path="res://disasters/quake_breaker.tscn" id="1_yjah4"]
 [ext_resource type="Script" uid="uid://bsesgdbmuhudn" path="res://cards/card.gd" id="2_ina6s"]
 [ext_resource type="Texture2D" uid="uid://bvlj40gpqyi1w" path="res://Assets/cards/Card-back-temp.png" id="3_lsimg"]
+[ext_resource type="Texture2D" uid="uid://b1oak0pyrnnp4" path="res://Assets/cards/EarthquakeCard.png" id="4_h1dbt"]
 
 [resource]
 script = ExtResource("2_ina6s")
@@ -10,7 +11,7 @@ id = 10
 name = "Quake"
 description = ""
 type = "Disaster"
-texture_face_up = ExtResource("3_lsimg")
+texture_face_up = ExtResource("4_h1dbt")
 texture_face_down = ExtResource("3_lsimg")
 cost = 3
 card_frequency = 2

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bxapsxcfenti2" path="res://buildings/broadcast.tscn" id="1_dwjdt"]
 [ext_resource type="Script" uid="uid://bsesgdbmuhudn" path="res://cards/card.gd" id="1_u61x4"]
 [ext_resource type="Texture2D" uid="uid://bvlj40gpqyi1w" path="res://Assets/cards/Card-back-temp.png" id="3_6j1m8"]
-[ext_resource type="Texture2D" uid="uid://c7647hfqxdnnq" path="res://icon.svg" id="4_fdoyj"]
+[ext_resource type="Texture2D" uid="uid://c81by6luuxucd" path="res://Assets/cards/BroadcastTowerCard.png" id="4_dwjdt"]
 
 [resource]
 script = ExtResource("1_u61x4")
@@ -11,7 +11,7 @@ id = 3
 name = "Broadcast Tower"
 description = ""
 type = "Building"
-texture_face_up = ExtResource("4_fdoyj")
+texture_face_up = ExtResource("4_dwjdt")
 texture_face_down = ExtResource("3_6j1m8")
 cost = 4
 card_frequency = 0
