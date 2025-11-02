@@ -87,7 +87,6 @@ script = ExtResource("2_gamegd")
 [node name="camera_manager" parent="." instance=ExtResource("2_78awf")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="camera_manager"]
-z_index = 1
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(55, -58)
@@ -105,12 +104,13 @@ text = "CUrrent Player"
 
 [node name="PlayerEnergy" type="Label" parent="."]
 layout_mode = 0
-offset_left = 248.0
-offset_top = 519.0
-offset_right = 362.0
-offset_bottom = 547.0
+offset_left = 592.0
+offset_top = 534.0
+offset_right = 613.0
+offset_bottom = 562.0
+theme_override_colors/font_color = Color(0.0347404, 0.193706, 0.0775828, 1)
 theme_override_fonts/font = ExtResource("3_s0nni")
-text = "Energy: 3"
+text = " 3"
 
 [node name="OpponentName" type="Label" parent="."]
 layout_mode = 0
@@ -140,6 +140,7 @@ offset_left = 381.0
 offset_top = 516.0
 offset_right = 762.0
 offset_bottom = 663.0
+metadata/_edit_lock_ = true
 
 [node name="OpponentCards" parent="." instance=ExtResource("1_ibkli")]
 z_index = 1
@@ -165,13 +166,6 @@ offset_right = 2256.0
 offset_bottom = -871.0
 scale = Vector2(6, 6)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(218, 534)
-scale = Vector2(0.871429, 0.871429)
-sprite_frames = SubResource("SpriteFrames_3xj3m")
-autoplay = "default"
-frame_progress = 0.669471
-
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 position = Vector2(996, 515)
 scale = Vector2(0.871429, 0.871429)
@@ -181,10 +175,14 @@ frame_progress = 0.44364
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 536.0
-offset_top = 22.0
-offset_right = 576.0
-offset_bottom = 45.0
+offset_left = 582.0
+offset_top = 611.0
+offset_right = 622.0
+offset_bottom = 634.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_s0nni")
+theme_override_font_sizes/font_size = 8
+text = "TIME"
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

@@ -15,6 +15,7 @@ var started = false
 var players := {} # peer_id -> name
 var player_instances := {} # peer_id -> NodePath (server-side reference)
 var player_hands := {} # peer_id -> Array[int] (authoritative hands)
+var has_drawn_full_hand := {}
 var ready_peers := {} # peer_id -> true when that peer has loaded the Game scene
 var player_energy := {} # peer_id -> int (server-authoritative energy values)
 var energy_rate:= 2
@@ -258,13 +259,11 @@ func rpc_change_scene(scene_path: String) -> void:
 # --------------------
 
 func deal_and_start_game(game_scene_path: String = "res://scenes/Game.tscn") -> void:
-	# Build a card pool from actual card resources found in res://cards (card_*.tres)
 	_build_card_pool()
 
-	# Prepare empty hands for each connected player
 	player_hands.clear()
-	# Prepare initial energy values for each connected player
 	player_energy.clear()
+
 	for peer_id in players.keys():
 		player_hands[peer_id] = []
 		player_energy[peer_id] = 3
@@ -272,48 +271,37 @@ func deal_and_start_game(game_scene_path: String = "res://scenes/Game.tscn") -> 
 	rpc("rpc_update_energies", player_energy)
 	call_deferred("rpc_update_energies", player_energy)
 
-	# Deal 3 cards each by sampling from `available_card_ids` (set by user).
-	var cards_per_player := 3
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	# Create a global pool shuffled from available_card_ids and draw without replacement
-	var pool := available_card_ids.duplicate()
+
+	# Build the draw pool, excluding card_0
+	var pool := []
+	for id in available_card_ids:
+		if id != 0:
+			pool.append(id)
 	pool.shuffle()
+
+	# --- Give only card_0 first ---
 	for peer_id in players.keys():
-		var chosen := []
-		for j in range(cards_per_player):
-			if pool.size() == 0:
-				# refill the pool when exhausted
-				pool = available_card_ids.duplicate()
-				pool.shuffle()
-				if pool.size() == 0:
-					# nothing to draw from; fallback
-					chosen.append(1)
-					continue
-			chosen.append(pool.pop_back())
-		player_hands[peer_id] = chosen
+		player_hands[peer_id] = [0]  # only card_0
+	# --- End first hand setup ---
 
-	# Reset handshake state
-	ready_peers.clear()
-
-	# Broadcast card pool metadata to clients so UI can show which cards exist
+	# Sync pool metadata (same as before)
 	var pool_meta := {}
 	for k in card_pool.keys():
 		pool_meta[k] = {"path": card_pool[k].path, "name": card_pool[k].name, "frequency": card_pool[k].frequency}
 	rpc("rpc_set_card_pool", pool_meta)
 	call_deferred("rpc_set_card_pool", pool_meta)
 
-	# Ask all peers to change scene; clients will call back rpc_client_loaded when ready
+	# Switch to game scene
 	if multiplayer.get_multiplayer_peer():
 		rpc("rpc_change_scene", game_scene_path)
-	# Change server scene locally
 	get_tree().change_scene_to_file(game_scene_path)
-	# Mark server as ready immediately (server doesn't need to rpc itself)
+
 	var server_id = multiplayer.get_unique_id()
 	ready_peers[server_id] = true
-
-	# If there are no remote peers, spawn immediately
 	_check_and_spawn_after_ready()
+
 
 
 @rpc("any_peer", "reliable")
@@ -409,7 +397,7 @@ func _server_spawn_players_and_send_hands() -> void:
 
 	# Broadcast public counts so each client can show face-down cards for opponents
 	var public_counts := {}
-	var cards_per_player := 3
+	var cards_per_player := 4
 	for peer_id in players.keys():
 		public_counts[peer_id] = cards_per_player
 	rpc("rpc_set_public_hand_counts", public_counts)
@@ -655,3 +643,50 @@ func rpc_update_energies(energies: Dictionary) -> void:
 		scene.rpc_update_energies(energies)
 	else:
 		push_warning("No handler for rpc_update_energies on current scene")
+
+@rpc("authority", "reliable")
+func request_full_hand_draw(player_id: int) -> void:
+	# This must run on server only.
+	# Only the server should actually process the draw logic
+	if not multiplayer.is_server():
+		print("[Network] Client tried to draw — passing to server.")
+		rpc_id(1, "request_full_hand_draw", player_id)
+		return
+
+	# Guard: only once per player
+	if has_drawn_full_hand.get(player_id, false):
+		print("[Network] player %d already drew full hand" % player_id)
+		return
+	has_drawn_full_hand[player_id] = true
+
+	print("[Network] request_full_hand_draw for player", player_id)
+
+	# Build a shuffled pool copy and draw up to 4 cards
+	var pool := available_card_ids.duplicate()
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	pool.shuffle()
+
+	var new_hand := []
+	for i in range(4):
+		if pool.size() == 0:
+			break
+		new_hand.append(pool.pop_back())
+
+	# Store authoritative hand if you use player_hands server-side
+	player_hands[player_id] = new_hand
+
+	# Send the private hand to the player. Use call_or_rpc_id so host receives it locally.
+	call_or_rpc_id(player_id, "rpc_receive_private_hand", [new_hand])
+
+	# Broadcast public counts (so opponent UI shows correct counts)
+	var public_counts := {}
+	# if you want only this player to have 4 and others keep existing counts:
+	for pid in players.keys():
+		if pid == player_id:
+			public_counts[pid] = new_hand.size()
+		else:
+			# fallback: if server has player_hands for others use that length, else 1
+			public_counts[pid] = player_hands[pid].size() if player_hands.has(pid) else 1
+	rpc("rpc_set_public_hand_counts", public_counts)
+	call_deferred("rpc_set_public_hand_counts", public_counts) # ensure local handled too

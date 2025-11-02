@@ -39,19 +39,20 @@ func update_visual() -> void:
 		itemDisplay.visible = false
 
 func _gui_input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		# Only allow player to select their own cards
-		if is_player_card:
-			emit_signal("slot_clicked", slot_index)
-			if _is_selected:
-				set_selected(false)
-				get_parent().get_parent().current_selected = -1
-				get_parent().get_parent().current_selected_type = ""
-			else:
-				set_selected(true)
-				get_parent().get_parent().current_selected_type = card_resource.type
-				#set every other card slot to unselected?
-				get_parent().get_parent().call_deferred("deselect_other_slots", slot_index)
+	if card_resource:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			# Only allow player to select their own cards
+			if is_player_card:
+				emit_signal("slot_clicked", slot_index)
+				if _is_selected:
+					set_selected(false)
+					get_parent().get_parent().current_selected = -1
+					get_parent().get_parent().current_selected_type = ""
+				else:
+					set_selected(true)
+					get_parent().get_parent().current_selected_type = card_resource.type
+					#set every other card slot to unselected?
+					get_parent().get_parent().call_deferred("deselect_other_slots", slot_index)
 
 func set_playable(enabled: bool) -> void:
 	_is_playable = enabled
@@ -80,6 +81,7 @@ func set_selected(selected: bool) -> void:
 		itemDisplay.modulate = Color(1, 1, 1, 1)
 
 func _on_mouse_entered():
+	if card_resource:
 		if cost_label:
 			cost_label.visible = true
 		if _is_selected:
@@ -89,6 +91,7 @@ func _on_mouse_entered():
 		t.tween_property(itemDisplay, "position", _orig_item_pos + Vector2(0, -8), 0.12)
 
 func _on_mouse_exited():
+	if card_resource:
 		if cost_label:
 			cost_label.visible = false
 		if _is_selected:
