@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ce3xngesk7jhm"]
+[gd_scene load_steps=50 format=3 uid="uid://ce3xngesk7jhm"]
 
 [ext_resource type="Texture2D" uid="uid://8q6r1p7b1415" path="res://Assets/buildings/WaterPump_Station.png" id="1_jcmoc"]
 [ext_resource type="Texture2D" uid="uid://djsf2tbyny5gh" path="res://Assets/buildings/Water pump Off.png" id="2_iobhc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://UI/Damage/damage_popup.tscn" id="3_eqj6y"]
 [ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://UI/Healthbar/healthbar-building.tscn" id="4_msvs2"]
 [ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="5_ddcd8"]
+[ext_resource type="AudioStream" uid="uid://c7kr25xiwtgak" path="res://Sounds/Facilities/WaterPump.wav" id="7_cd3tv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcmoc"]
 atlas = ExtResource("1_jcmoc")
@@ -333,17 +334,17 @@ script = ExtResource("2_tktok")
 damage_popup_scene = ExtResource("3_eqj6y")
 
 [node name="Healthbar" parent="." instance=ExtResource("4_msvs2")]
-offset_left = -11.503
-offset_top = 11.043
-offset_right = 44.497
-offset_bottom = 71.0431
+offset_left = -26.0
+offset_top = -0.999999
+offset_right = 30.0
+offset_bottom = 59.0001
 
 [node name="Inactive" type="Label" parent="."]
 visible = false
-offset_left = -25.492
-offset_top = -90.761
-offset_right = 54.508
-offset_bottom = -62.761
+offset_left = -39.8222
+offset_top = -67.2914
+offset_right = 40.1778
+offset_bottom = -39.2914
 theme_override_fonts/font = ExtResource("5_ddcd8")
 theme_override_font_sizes/font_size = 16
 text = "Inactive"
@@ -353,3 +354,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_7xf2m")
 }
 autoplay = "new_animation"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_cd3tv")

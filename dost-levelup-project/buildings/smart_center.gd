@@ -46,6 +46,8 @@ func _ready():
 	else:
 		push_warning("⚠️ No Healthbar found in " + str(name))
 	
+	if $AudioStreamPlayer2D:
+		$AudioStreamPlayer2D.play()
 
 func blackout():
 	await get_tree().create_timer(1).timeout

@@ -1,7 +1,8 @@
-[gd_scene load_steps=52 format=3 uid="uid://d4aeb403u2h6r"]
+[gd_scene load_steps=53 format=3 uid="uid://d4aeb403u2h6r"]
 
 [ext_resource type="Texture2D" uid="uid://qwc7v5p1nugp" path="res://Assets/disasters/QuakeBreaker.png" id="1_s2cwq"]
 [ext_resource type="Script" uid="uid://78gu4ngc241y" path="res://disasters/blackout.gd" id="2_f4rju"]
+[ext_resource type="AudioStream" uid="uid://dkm6sqrtirsdl" path="res://Sounds/Disasters/QuakeBreaker.wav" id="3_f4rju"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f4rju"]
 atlas = ExtResource("1_s2cwq")
@@ -356,6 +357,8 @@ position = Vector2(32, -19)
 scale = Vector2(1.5293, 1.82031)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 autoplay = "default"
-frame = 48
-frame_progress = 1.0
+offset = Vector2(31.85, 3.99)
 script = ExtResource("2_f4rju")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_f4rju")

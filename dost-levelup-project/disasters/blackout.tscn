@@ -1,7 +1,8 @@
-[gd_scene load_steps=44 format=3 uid="uid://bqm70kqfbgpnd"]
+[gd_scene load_steps=45 format=3 uid="uid://bqm70kqfbgpnd"]
 
 [ext_resource type="Texture2D" uid="uid://dmfxfn20uf2cl" path="res://Assets/disasters/BlackoutBurst.png" id="1_vmujt"]
 [ext_resource type="Script" uid="uid://78gu4ngc241y" path="res://disasters/blackout.gd" id="2_wf2fj"]
+[ext_resource type="AudioStream" uid="uid://b0kri8hg57rwc" path="res://Sounds/Disasters/BlackoutBurst.wav" id="3_emvmu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wf2fj"]
 atlas = ExtResource("1_vmujt")
@@ -292,10 +293,11 @@ animations = [{
 }]
 
 [node name="Blackout Burst" type="AnimatedSprite2D"]
-position = Vector2(21, 10)
-scale = Vector2(0.328125, 0.328125)
+position = Vector2(51.59, 10)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 autoplay = "default"
-frame = 39
-frame_progress = 1.0
+offset = Vector2(12.735, -15.725)
 script = ExtResource("2_wf2fj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_emvmu")
