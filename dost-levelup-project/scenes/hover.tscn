@@ -29,6 +29,9 @@ layout_mode = 2
 horizontal_alignment = 3
 vertical_alignment = 3
 
+[node name="TotalRes" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
 [node name="FireLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 

@@ -77,9 +77,13 @@ func _update_hover_labels() -> void:
 			"fire": building_scene.fire_resistance if building_scene.has_method("fire_resistance") or "fire_resistance" in building_scene else building_scene.fire_resistance,
 			"wind": building_scene.wind_resistance if "wind_resistance" in building_scene else building_scene.wind_resistance,
 			"water": building_scene.water_resistance if "water_resistance" in building_scene else building_scene.water_resistance,
-			"sturdiness": building_scene.sturdiness if "sturdiness" in building_scene else building_scene.sturdiness
+			"sturdiness": building_scene.sturdiness if "sturdiness" in building_scene else building_scene.sturdiness,
+			"smart_center": building_scene.smart_center_res if "smart_center_res" in building_scene else null
 		}
-
+	if hover.has_node("VBoxContainer/SmartCenterLabel") and res.has("smart_center") and res["smart_center"] != null:
+		var sc_val = res.get("smart_center", 1.0)
+		hover.get_node("VBoxContainer/SmartCenterLabel").text = "SC Res: %.0f%%" % ((1.0 - sc_val) * 100.0)
+		return
 	if hover.has_node("VBoxContainer/FireLabel"):
 		var fire_val = res.get("fire", 1.0)
 		# Convert resistance: 1.0 = 0% resistance, 0.0 = 100% resistance

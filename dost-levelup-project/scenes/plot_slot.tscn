@@ -17,9 +17,13 @@ texture_normal = ExtResource("1_7c8nn")
 script = ExtResource("1_4dmsh")
 
 [node name="PanelContainer" parent="." instance=ExtResource("3_7c8nn")]
-visible = false
 layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 40.0
 offset_bottom = 77.0
+
+[node name="SmartCenterLabel" type="Label" parent="PanelContainer/VBoxContainer" index="3"]
+layout_mode = 2
+
+[editable path="PanelContainer"]

@@ -76,6 +76,7 @@ func blackout():
 func _process(delta):
 	if inactive:
 		return
+	smart_center_res = 1 - (get_parent().get_parent().get_parent().count_active_buildings() * 0.04)
 		
 	if disabled:
 		disable_timer -= delta
@@ -96,7 +97,6 @@ func take_damage(amount: int, damage_type: String) -> void:
 	#sc takes damage uniquely as its resistance doesnt affect damage taken
 	print("Taking damage:", amount, "type:", damage_type, "HP before:", hp)
 	#for each active building, reduce damage by 4%
-	smart_center_res = 1 - (get_parent().get_parent().get_parent().count_active_buildings() * 0.04)
 	amount = amount * smart_center_res
 
 	hp = max(0, hp - amount)
