@@ -1,10 +1,11 @@
-[gd_scene load_steps=49 format=3 uid="uid://bxapsxcfenti2"]
+[gd_scene load_steps=50 format=3 uid="uid://bxapsxcfenti2"]
 
 [ext_resource type="Texture2D" uid="uid://caibej5bien4v" path="res://Assets/buildings/BroadCast_Tower.png" id="1_w3seh"]
 [ext_resource type="Script" uid="uid://b5cmy21fp6se6" path="res://buildings/broadcast.gd" id="2_w3seh"]
 [ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://UI/Damage/damage_popup.tscn" id="3_fgu50"]
 [ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://UI/Healthbar/healthbar-building.tscn" id="4_a811v"]
 [ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="5_pabux"]
+[ext_resource type="AudioStream" uid="uid://do1p5r3ldbrco" path="res://Sounds/Facilities/EmergencyBroadcastTower.wav" id="6_rcte5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fgu50"]
 atlas = ExtResource("1_w3seh")
@@ -358,3 +359,6 @@ offset_left = -26.473
 offset_top = 0.378
 offset_right = 29.527
 offset_bottom = 60.3781
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_rcte5")

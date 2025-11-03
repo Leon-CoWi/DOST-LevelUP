@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cudva8w7g4cq6"]
+[gd_scene load_steps=18 format=3 uid="uid://cudva8w7g4cq6"]
 
 [ext_resource type="PackedScene" uid="uid://dedbpf86ccbmq" path="res://scenes/card_holder.tscn" id="1_ibkli"]
 [ext_resource type="PackedScene" uid="uid://bgotnrxymhdmn" path="res://scenes/camera_manager.tscn" id="2_78awf"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cllmt8gc4d4kg" path="res://Assets/landscape/Sprite-0002.png" id="3_kiw3p"]
 [ext_resource type="Texture2D" uid="uid://capy81h6w4vjw" path="res://Assets/landscape/Grass.png" id="3_qy1jj"]
 [ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="3_s0nni"]
-[ext_resource type="Texture2D" uid="uid://bons6a4343imk" path="res://Assets/landscape/sadas.png" id="4_3xj3m"]
 [ext_resource type="Texture2D" uid="uid://q32nagr62ido" path="res://Assets/UI/Energy-Sheet.png" id="6_aug50"]
 [ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://UI/Healthbar/healthbar-building.tscn" id="8_400sg"]
 
@@ -47,22 +46,13 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcffj"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g4kob"]
 texture = ExtResource("3_qy1jj")
 texture_region_size = Vector2i(600, 600)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(48, 12)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rd6h"]
-texture = ExtResource("4_3xj3m")
-texture_region_size = Vector2i(144, 87)
-1:1/0 = 0
-0:1/0 = 0
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, -5)
-1:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_400sg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy1jj"]
 texture = ExtResource("3_kiw3p")
 texture_region_size = Vector2i(256, 256)
 1:2/0 = 0
@@ -72,10 +62,9 @@ texture_region_size = Vector2i(256, 256)
 
 [sub_resource type="TileSet" id="TileSet_g4kob"]
 tile_shape = 1
-tile_size = Vector2i(196, 97)
-sources/2 = SubResource("TileSetAtlasSource_400sg")
-sources/0 = SubResource("TileSetAtlasSource_mcffj")
-sources/1 = SubResource("TileSetAtlasSource_2rd6h")
+tile_size = Vector2i(181, 97)
+sources/2 = SubResource("TileSetAtlasSource_qy1jj")
+sources/0 = SubResource("TileSetAtlasSource_g4kob")
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -189,10 +178,890 @@ limit_bottom = 300.0
 pan_margin = 128.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="camera_manager"]
-z_index = 1
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(86, -32)
+position = Vector2(-5, 138)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer111" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-5, 138)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-135, 139)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(126, 139)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer4" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(253, 138)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer5" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(384, 140)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer7" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(828, 141)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer8" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(698, 142)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer9" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(959, 142)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer10" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1086, 141)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer11" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1217, 143)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer6" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(497, 143)
+scale = Vector2(0.475, 0.475)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer12" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-3, 59)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer13" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-133, 60)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer14" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(128, 60)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer15" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(255, 59)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer16" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(386, 61)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer17" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(830, 62)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer18" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(700, 63)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer19" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(961, 63)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer20" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1088, 62)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer21" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1219, 64)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer22" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(499, 64)
+scale = Vector2(0.475, 0.475)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer23" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-3, 220)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer24" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-133, 221)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer25" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(128, 221)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer26" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(255, 220)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer27" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(386, 222)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer28" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(830, 223)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer29" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(700, 224)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer30" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(961, 224)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer31" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1088, 223)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer32" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1219, 225)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer33" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(499, 225)
+scale = Vector2(0.475, 0.475)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer34" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-3, 299)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer35" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-133, 300)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer36" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(128, 300)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer37" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(255, 299)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer38" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(386, 301)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer39" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(830, 302)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer40" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(700, 303)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer41" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(961, 303)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer42" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1088, 302)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer43" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1219, 304)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer44" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(499, 304)
+scale = Vector2(0.475, 0.475)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer45" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-6, 375)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer46" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-136, 376)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer47" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(125, 376)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer48" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(252, 375)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer49" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(383, 377)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer50" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(827, 378)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer51" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(697, 379)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer52" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(958, 379)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer53" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1085, 378)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer54" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1216, 380)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer55" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(496, 380)
+scale = Vector2(0.475, 0.475)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer56" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-6, 456)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer57" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-136, 457)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer58" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(125, 457)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer59" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(252, 456)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer60" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(383, 458)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer61" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(827, 459)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer62" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(697, 460)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer63" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(958, 460)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer64" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1085, 459)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer65" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1216, 461)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer66" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(496, 461)
+scale = Vector2(0.475, 0.475)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer67" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(61, 490)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer68" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-69, 491)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer69" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(192, 491)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer70" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(319, 490)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer71" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(450, 492)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer72" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(894, 493)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer73" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(764, 494)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer74" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1025, 494)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer75" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1152, 493)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer76" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1283, 495)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer77" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(563, 495)
+scale = Vector2(0.475, 0.475)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer78" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-133, 525)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer79" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-263, 526)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer80" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-2, 526)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer81" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(125, 525)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer82" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(256, 527)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer83" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(700, 528)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer84" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(570, 529)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer85" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(831, 529)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer86" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(958, 528)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer87" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1089, 530)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer88" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(369, 530)
+scale = Vector2(0.475, 0.475)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer89" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-201, 560)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer90" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-331, 561)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer91" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-70, 561)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer92" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(57, 560)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer93" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(188, 562)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer94" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(632, 563)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer95" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(502, 564)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer96" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(763, 564)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer97" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(890, 563)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer98" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1021, 565)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer99" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(301, 565)
+scale = Vector2(0.475, 0.475)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer101" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-398, 598)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer102" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-137, 598)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer103" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-10, 597)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer104" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(121, 599)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer105" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(565, 600)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer106" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(435, 601)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer107" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(696, 601)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer108" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(823, 600)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer109" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(954, 602)
+scale = Vector2(0.355, 0.355)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer110" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(234, 602)
+scale = Vector2(0.475, 0.475)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_g4kob")
+
+[node name="TileMapLayer100" type="TileMapLayer" parent="camera_manager"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-268, 597)
+scale = Vector2(0.355, 0.355)
 tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_g4kob")
 

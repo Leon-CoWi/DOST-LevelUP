@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cs3nld6h4j6jh"]
+[gd_scene load_steps=20 format=3 uid="uid://cs3nld6h4j6jh"]
 
 [ext_resource type="Texture2D" uid="uid://0dd52n31w0en" path="res://Assets/buildings/power-backup-unit.png" id="1_6w21x"]
 [ext_resource type="Script" uid="uid://bq6qj0qqb1jiq" path="res://buildings/smart_center.gd" id="2_6w21x"]
 [ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://UI/Damage/damage_popup.tscn" id="3_6naqn"]
 [ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="5_po0o0"]
+[ext_resource type="AudioStream" uid="uid://cqgymy8k7v2do" path="res://Sounds/Facilities/PowerEnergyUnit.wav" id="5_wacdh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6naqn"]
 atlas = ExtResource("1_6w21x")
@@ -145,3 +146,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_7xf2m")
 }
 autoplay = "new_animation"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_wacdh")
