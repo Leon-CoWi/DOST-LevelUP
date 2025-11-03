@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 class_name SC
 
-@export var max_hp: int = 1250
+@export var max_hp: int = 20
 var hp: int
 var health_bar 
 var hp_not_init = true
@@ -99,12 +99,18 @@ func take_damage(amount: int, damage_type: String) -> void:
 
 	hp = max(0, hp - amount)
 	health_bar.value = hp
-	if hp <= 0:
+	if hp <= 0 and not inactive:
 		inactive = true
 		$Inactive.visible = true
 		if sprite_frames.has_animation("off"):
 			play("off")
+
 		emit_signal("destroyed", owner_peer_id)
+		print("Smart Center destroyed by peer:", owner_peer_id)
+		
+		# Fade out & end game
+		await fade_and_end_game(owner_peer_id)
+		return
 
 	popup = damage_popup_scene.instantiate()
 	get_tree().current_scene.add_child(popup)
@@ -116,6 +122,8 @@ func take_damage(amount: int, damage_type: String) -> void:
 		modulate = Color(1, 0, 0, 0.5)
 		await get_tree().create_timer(0.08).timeout
 		modulate = Color(1, 1, 1)
+		
+
 
 func repair_building(amount: int) -> void:
 	print("repairing")
@@ -135,3 +143,22 @@ func repair_building(amount: int) -> void:
 
 	hp = min(max_hp, hp + amount)
 	health_bar.value = hp
+
+func fade_and_end_game(destroyed_owner_id: int) -> void:
+	var fade_rect = ColorRect.new()
+	fade_rect.color = Color(0, 0, 0, 0)
+	fade_rect.size = get_viewport_rect().size
+	fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	get_tree().current_scene.add_child(fade_rect)
+
+	var tween = create_tween()
+	tween.tween_property(fade_rect, "color:a", 1.0, 2.0) # fade to black in 2s
+	await tween.finished
+
+	var winner_name: String
+	if get_parent().board_owner == "player":
+		Global.winner = "Opponent"
+	else:
+		Global.winner = "You"
+
+	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")

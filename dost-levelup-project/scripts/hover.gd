@@ -50,8 +50,9 @@ func toggle(on: bool) -> void:
 		# Fade out then hide
 		print("[Hover] Hiding tooltip")
 		tween_opacity(0.0)
-		await get_tree().create_timer(0.3).timeout
-		hide()
+		if get_tree():
+			await get_tree().create_timer(0.3).timeout
+			hide()
 
 func tween_opacity(to: float) -> Tween:
 	opacity_tween = create_tween()

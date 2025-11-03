@@ -1,87 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://bcaf0r8eajc88"]
+[gd_scene load_steps=25 format=3 uid="uid://bcaf0r8eajc88"]
 
-[ext_resource type="Texture2D" uid="uid://8q6r1p7b1415" path="res://Assets/buildings/WaterPump_Station.png" id="1_r2lyu"]
 [ext_resource type="Texture2D" uid="uid://s4shc0twl5ds" path="res://Assets/buildings/seismic-reinforcement-lab.png" id="2_r2lyu"]
 [ext_resource type="Script" uid="uid://c1ctbg7s0jd71" path="res://buildings/seismic_reinforcement_lab.gd" id="3_2xrxg"]
 [ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://UI/Damage/damage_popup.tscn" id="4_r2lyu"]
 [ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://UI/Healthbar/healthbar-building.tscn" id="5_3g6ty"]
 [ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="6_iglc6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jcmoc"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tktok"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eqj6y"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_msvs2"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ddcd8"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(512, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iobhc"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(640, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cd3tv"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(768, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b2yw5"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(896, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0v1ea"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(0, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1rfdw"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(128, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ievd"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(256, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hy2wi"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(384, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xdgsq"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(512, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6bw23"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(640, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6r8ng"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(768, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y2ijr"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(896, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1n7t2"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(0, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l18hd"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(128, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vsd11"]
-atlas = ExtResource("1_r2lyu")
-region = Rect2(256, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rvv5t"]
 atlas = ExtResource("2_r2lyu")
@@ -147,68 +70,6 @@ region = Rect2(768, 128, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jcmoc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tktok")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eqj6y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_msvs2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ddcd8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iobhc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cd3tv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b2yw5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0v1ea")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1rfdw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7ievd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hy2wi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xdgsq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6bw23")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6r8ng")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y2ijr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1n7t2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l18hd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vsd11")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_rvv5t")
 }, {
 "duration": 1.0,
@@ -254,7 +115,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_3t1yk")
 }],
 "loop": true,
-"name": &"off",
+"name": &"default",
 "speed": 8.0
 }]
 
@@ -298,9 +159,7 @@ _data = {
 [node name="Seismic" type="AnimatedSprite2D" groups=["buildings"]]
 position = Vector2(16, 10)
 sprite_frames = SubResource("SpriteFrames_3mswn")
-animation = &"off"
 autoplay = "default"
-frame_progress = 0.0312811
 offset = Vector2(0.1, -38.57)
 script = ExtResource("3_2xrxg")
 damage_popup_scene = ExtResource("4_r2lyu")
