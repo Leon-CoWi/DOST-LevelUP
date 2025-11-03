@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://dux4sg7dfv7s0"]
+[gd_scene load_steps=21 format=3 uid="uid://dux4sg7dfv7s0"]
 
 [ext_resource type="Texture2D" uid="uid://3cbrgd1h4p4t" path="res://Assets/disasters/FireStrike.png" id="1_353ho"]
 [ext_resource type="Script" uid="uid://78gu4ngc241y" path="res://disasters/blackout.gd" id="2_ljend"]
+[ext_resource type="AudioStream" uid="uid://bn6inn1tl6f1p" path="res://Sounds/Disasters/meteorsmash_kzMRPBnG.wav" id="3_ljend"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ljend"]
 atlas = ExtResource("1_353ho")
@@ -133,6 +134,8 @@ scale = Vector2(1.97168, 2.5415)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame = 16
-frame_progress = 1.0
+offset = Vector2(7.085, -1.715)
 script = ExtResource("2_ljend")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ljend")

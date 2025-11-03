@@ -32,6 +32,10 @@ func _ready():
 	init_stats()
 	hp = max_hp
 
+	# Play placement sound if AudioStreamPlayer2D exists
+	if has_node("AudioStreamPlayer2D"):
+		$AudioStreamPlayer2D.play()
+
 	# Find the health bar safely
 	if has_node("Healthbar"):
 		health_bar = $Healthbar

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://donsu5iw65qqa"]
+[gd_scene load_steps=62 format=3 uid="uid://donsu5iw65qqa"]
 
 [ext_resource type="Texture2D" uid="uid://bl3vuuy3sxkjj" path="res://Assets/buildings/EquipmentGarage_Main.png" id="1_7tube"]
 [ext_resource type="Texture2D" uid="uid://bpfri6lt56hmm" path="res://Assets/buildings/Garage Off.png" id="2_7rem7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://UI/Damage/damage_popup.tscn" id="3_by5wo"]
 [ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://UI/Healthbar/healthbar-building.tscn" id="4_semws"]
 [ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="5_53jov"]
+[ext_resource type="AudioStream" uid="uid://dac5d4jo820q8" path="res://Sounds/Facilities/RescueEquipmentGarage.wav" id="7_7xf2m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pd5kn"]
 atlas = ExtResource("1_7tube")
@@ -421,10 +422,10 @@ damage_popup_scene = ExtResource("3_by5wo")
 
 [node name="Inactive" type="Label" parent="."]
 visible = false
-offset_left = -37.9009
-offset_top = -107.0
-offset_right = 42.0991
-offset_bottom = -79.0
+offset_left = -39.8222
+offset_top = -67.2914
+offset_right = 40.1778
+offset_bottom = -39.2914
 theme_override_fonts/font = ExtResource("5_53jov")
 theme_override_font_sizes/font_size = 16
 text = "Inactive"
@@ -441,3 +442,6 @@ offset_top = -1.0
 offset_right = 21.9864
 offset_bottom = 59.0001
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_7xf2m")

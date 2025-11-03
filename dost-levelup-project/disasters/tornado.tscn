@@ -1,7 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://w6esbknnqu0u"]
+[gd_scene load_steps=37 format=3 uid="uid://w6esbknnqu0u"]
 
 [ext_resource type="Texture2D" uid="uid://dpc1r8q6voml" path="res://Assets/disasters/Tornado_Sweep.png" id="1_1f5h1"]
 [ext_resource type="Script" uid="uid://78gu4ngc241y" path="res://disasters/blackout.gd" id="2_yhlgd"]
+[ext_resource type="AudioStream" uid="uid://drdghv3td31d3" path="res://Sounds/Disasters/typhoonbreaker_YzJHJNql.wav" id="3_yhlgd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhlgd"]
 atlas = ExtResource("1_1f5h1")
@@ -242,9 +243,11 @@ animations = [{
 }]
 
 [node name="Tornado" type="AnimatedSprite2D"]
-position = Vector2(21, 10)
-scale = Vector2(0.328125, 0.328125)
+position = Vector2(20.575, 10)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 autoplay = "default"
-frame_progress = 0.268598
+offset = Vector2(43.19, -8.605)
 script = ExtResource("2_yhlgd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yhlgd")

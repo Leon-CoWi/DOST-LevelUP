@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://bcaf0r8eajc88"]
+[gd_scene load_steps=46 format=3 uid="uid://bcaf0r8eajc88"]
 
 [ext_resource type="Texture2D" uid="uid://s4shc0twl5ds" path="res://Assets/buildings/seismic-reinforcement-lab.png" id="2_r2lyu"]
 [ext_resource type="Script" uid="uid://c1ctbg7s0jd71" path="res://buildings/seismic_reinforcement_lab.gd" id="3_2xrxg"]
 [ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://UI/Damage/damage_popup.tscn" id="4_r2lyu"]
 [ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://UI/Healthbar/healthbar-building.tscn" id="5_3g6ty"]
 [ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="6_iglc6"]
+[ext_resource type="AudioStream" uid="uid://cxwfrgt5gqp31" path="res://Sounds/Facilities/SeismicReinforcementLab.wav" id="7_rvv5t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rvv5t"]
 atlas = ExtResource("2_r2lyu")
@@ -160,17 +161,19 @@ _data = {
 position = Vector2(16, 10)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 autoplay = "default"
-offset = Vector2(0.1, -38.57)
+frame_progress = 0.0312811
+offset = Vector2(-0.59, -35.815)
 script = ExtResource("3_2xrxg")
 damage_popup_scene = ExtResource("4_r2lyu")
 
 [node name="Healthbar" parent="." instance=ExtResource("5_3g6ty")]
-offset_left = -14.0
-offset_top = 15.0
-offset_right = 42.0
-offset_bottom = 74.9997
+offset_left = -28.0
+offset_top = 7.0
+offset_right = 28.0
+offset_bottom = 66.9997
 
 [node name="Inactive" type="Label" parent="."]
+visible = false
 offset_left = -39.8222
 offset_top = -67.2914
 offset_right = 40.1778
@@ -184,3 +187,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_7xf2m")
 }
 autoplay = "new_animation"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_rvv5t")
