@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 class_name SC
 
-@export var max_hp: int = 1500
+@export var max_hp: int = 1250
 var hp: int
 var health_bar 
 var hp_not_init = true
@@ -123,6 +123,7 @@ func repair_building(amount: int) -> void:
 	print("repairing")
 	if inactive:
 		return
+	amount = amount / 2
 	if max_hp < (hp + amount):
 		amount = max_hp - hp
 		if amount == 0:

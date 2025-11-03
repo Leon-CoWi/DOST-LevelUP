@@ -31,7 +31,7 @@ func trigger_effect(delta):
 				tile.building_scene.wind_resistance = max(tile.building_scene.wind_resistance - 0.01, 0.3)
 				tile.building_scene.fire_resistance = max(tile.building_scene.fire_resistance - 0.01, 0.3)
 				tile.building_scene.sturdiness = max(tile.building_scene.sturdiness - 0.01, 0.3)
-				tile.building_scene.wind_resistance = max(tile.building_scene.wind_resistance - 0.01, 0.3)
+				tile.building_scene.water_resistance = max(tile.building_scene.water_resistance - 0.01, 0.3)
 				
 
 func show_increase() -> void:

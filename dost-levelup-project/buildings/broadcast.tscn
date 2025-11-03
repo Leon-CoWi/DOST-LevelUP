@@ -340,10 +340,10 @@ damage_popup_scene = ExtResource("3_fgu50")
 
 [node name="Inactive" type="Label" parent="."]
 visible = false
-offset_left = -40.112
-offset_top = -137.576
-offset_right = 39.888
-offset_bottom = -109.576
+offset_left = -39.8222
+offset_top = -67.2914
+offset_right = 40.1778
+offset_bottom = -39.2914
 theme_override_fonts/font = ExtResource("5_pabux")
 theme_override_font_sizes/font_size = 16
 text = "Inactive"
