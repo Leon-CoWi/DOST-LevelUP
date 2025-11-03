@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bcaf0r8eajc88"]
+[gd_scene load_steps=26 format=3 uid="uid://bcaf0r8eajc88"]
 
 [ext_resource type="Texture2D" uid="uid://s4shc0twl5ds" path="res://Assets/buildings/seismic-reinforcement-lab.png" id="2_r2lyu"]
 [ext_resource type="Script" uid="uid://c1ctbg7s0jd71" path="res://buildings/seismic_reinforcement_lab.gd" id="3_2xrxg"]

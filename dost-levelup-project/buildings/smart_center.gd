@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 class_name SC
 
-@export var max_hp: int = 20
+@export var max_hp: int = 1250
 var hp: int
 var health_bar 
 var hp_not_init = true

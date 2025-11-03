@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c253bntq5g4gy"]
 
 [ext_resource type="Script" uid="uid://bf27br628nx3k" path="res://UI/card_slot.gd" id="1_p0pna"]
-[ext_resource type="Texture2D" uid="uid://bvlj40gpqyi1w" path="res://Assets/cards/Card-back-temp.png" id="2_hrgpv"]
+[ext_resource type="Texture2D" uid="uid://c1aaa7qemqw7e" path="res://Assets/cards/seismic-card.png" id="2_4432s"]
 [ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="3_4432s"]
 
 [node name="card_slot" type="Panel"]
@@ -25,8 +25,7 @@ self_modulate = Color(1, 0.09, 0.09, 1)
 layout_mode = 2
 
 [node name="itemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_hrgpv")
+texture = ExtResource("2_4432s")
 
 [node name="Cost" type="Label" parent="."]
 layout_mode = 0

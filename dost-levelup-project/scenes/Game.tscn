@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cudva8w7g4cq6"]
+[gd_scene load_steps=30 format=3 uid="uid://cudva8w7g4cq6"]
 
 [ext_resource type="PackedScene" uid="uid://dedbpf86ccbmq" path="res://scenes/card_holder.tscn" id="1_ibkli"]
 [ext_resource type="PackedScene" uid="uid://bgotnrxymhdmn" path="res://scenes/camera_manager.tscn" id="2_78awf"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cllmt8gc4d4kg" path="res://Assets/landscape/Sprite-0002.png" id="3_kiw3p"]
 [ext_resource type="Texture2D" uid="uid://capy81h6w4vjw" path="res://Assets/landscape/Grass.png" id="3_qy1jj"]
 [ext_resource type="FontFile" uid="uid://drkkic2osaftg" path="res://Assets/fonts/Minecraftia-Regular.ttf" id="3_s0nni"]
+[ext_resource type="Texture2D" uid="uid://crgs6ku1nis60" path="res://Assets/UI/pips-female-Sheet.png" id="6_3xj3m"]
 [ext_resource type="Texture2D" uid="uid://q32nagr62ido" path="res://Assets/UI/Energy-Sheet.png" id="6_aug50"]
+[ext_resource type="Texture2D" uid="uid://b6ugwucajnrhk" path="res://Assets/UI/pips-male-Sheet.png" id="7_mcffj"]
 [ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://UI/Healthbar/healthbar-building.tscn" id="8_400sg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kiw3p"]
@@ -46,6 +48,88 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xj3m"]
+atlas = ExtResource("6_3xj3m")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcffj"]
+atlas = ExtResource("6_3xj3m")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rd6h"]
+atlas = ExtResource("7_mcffj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ua8r"]
+atlas = ExtResource("7_mcffj")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ua8r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xj3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcffj")
+}],
+"loop": true,
+"name": &"host",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rd6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ua8r")
+}],
+"loop": true,
+"name": &"opponent",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjgi4"]
+atlas = ExtResource("6_3xj3m")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyk2p"]
+atlas = ExtResource("6_3xj3m")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7sob"]
+atlas = ExtResource("7_mcffj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5y3l"]
+atlas = ExtResource("7_mcffj")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjgi4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjgi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyk2p")
+}],
+"loop": true,
+"name": &"host",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7sob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5y3l")
+}],
+"loop": true,
+"name": &"opponent",
+"speed": 5.0
+}]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g4kob"]
 texture = ExtResource("3_qy1jj")
 texture_region_size = Vector2i(600, 600)
@@ -76,53 +160,55 @@ script = ExtResource("2_gamegd")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerName" type="Label" parent="CanvasLayer"]
-offset_left = 28.0
-offset_top = 508.0
-offset_right = 178.0
-offset_bottom = 536.0
+offset_left = 127.0
+offset_top = 513.0
+offset_right = 277.0
+offset_bottom = 541.0
 theme_override_fonts/font = ExtResource("3_s0nni")
 text = "CUrrent Player"
 
 [node name="PlayerEnergy" type="Label" parent="CanvasLayer"]
-offset_left = 596.0
-offset_top = 534.0
-offset_right = 617.0
-offset_bottom = 562.0
+offset_left = 567.0
+offset_top = 525.0
+offset_right = 604.0
+offset_bottom = 553.0
 theme_override_colors/font_color = Color(0.0347404, 0.193706, 0.0775828, 1)
 theme_override_fonts/font = ExtResource("3_s0nni")
 text = " 3"
+horizontal_alignment = 1
 
 [node name="OpponentName" type="Label" parent="CanvasLayer"]
-offset_left = 1021.0
-offset_top = 502.0
-offset_right = 1135.0
-offset_bottom = 530.0
+offset_left = 868.0
+offset_top = 517.0
+offset_right = 982.0
+offset_bottom = 545.0
 theme_override_fonts/font = ExtResource("3_s0nni")
 text = "OppPlayer"
 horizontal_alignment = 2
 
 [node name="OpponentEnergy" type="Label" parent="CanvasLayer"]
-offset_left = 853.0
-offset_top = 504.0
-offset_right = 967.0
-offset_bottom = 557.0
+offset_left = 1018.0
+offset_top = 617.0
+offset_right = 1132.0
+offset_bottom = 670.0
 theme_override_fonts/font = ExtResource("3_s0nni")
 text = "Energy: 3
 "
 horizontal_alignment = 2
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CanvasLayer"]
-position = Vector2(1000, 515)
+[node name="EnergySprite" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(1032, 686)
 scale = Vector2(0.871429, 0.871429)
 sprite_frames = SubResource("SpriteFrames_3xj3m")
 autoplay = "default"
-frame_progress = 0.44364
+frame_progress = 0.242046
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 588.0
-offset_top = 610.0
-offset_right = 628.0
-offset_bottom = 633.0
+offset_left = 566.0
+offset_top = 619.0
+offset_right = 606.0
+offset_bottom = 642.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_s0nni")
 theme_override_font_sizes/font_size = 8
@@ -147,6 +233,7 @@ offset_left = 873.0
 offset_top = 433.0
 offset_right = 1137.0
 offset_bottom = 807.0
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" parent="CanvasLayer/OpponentHealthbar" index="1"]
 position = Vector2(131.5, 181.375)
@@ -161,13 +248,32 @@ offset_bottom = -10.0
 
 [node name="PlayerCards" parent="CanvasLayer" instance=ExtResource("1_ibkli")]
 z_index = 1
-offset_left = 385.0
-offset_top = 516.0
-offset_right = 766.0
-offset_bottom = 663.0
+offset_left = 354.0
+offset_top = 527.0
+offset_right = 733.952
+offset_bottom = 674.208
+metadata/_edit_lock_ = true
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(105, 503)
+scale = Vector2(2.32813, 2.65625)
+sprite_frames = SubResource("SpriteFrames_7ua8r")
+animation = &"host"
+autoplay = "host"
+frame_progress = 0.0131258
+metadata/_edit_lock_ = true
+
+[node name="OpponentSprite" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(1057, 498)
+scale = Vector2(2.32813, 2.65625)
+sprite_frames = SubResource("SpriteFrames_vjgi4")
+animation = &"opponent"
+autoplay = "opponent"
+frame_progress = 0.0617318
 metadata/_edit_lock_ = true
 
 [node name="camera_manager" parent="." instance=ExtResource("2_78awf")]
+visible = false
 position = Vector2(-4, 0)
 min_zoom = 1.0
 drag_speed = 2.0
@@ -176,6 +282,7 @@ limit_top = -500.0
 limit_right = 800.0
 limit_bottom = 300.0
 pan_margin = 128.0
+metadata/_edit_lock_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="camera_manager"]
 y_sort_enabled = true

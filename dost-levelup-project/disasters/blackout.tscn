@@ -296,6 +296,7 @@ animations = [{
 position = Vector2(51.59, 10)
 sprite_frames = SubResource("SpriteFrames_3mswn")
 autoplay = "default"
+frame_progress = 0.586863
 offset = Vector2(12.735, -15.725)
 script = ExtResource("2_wf2fj")
 

@@ -14,6 +14,8 @@ var selected_card_slot_index = null
 var seconds_passed = 0
 @export var card_reveal_duration := 1.0 # Duration in seconds to show revealed cards
 var game_timer: Timer = null
+@onready var player_sprite = $CanvasLayer/PlayerSprite
+@onready var opponent_sprite = $CanvasLayer/OpponentSprite
 
 func _ready():
 	# Inform the authoritative server that this client finished loading the Game scene.
@@ -28,6 +30,22 @@ func _ready():
 	_connect_plot_slots()
 	# Start the game timer
 	_start_game_timer()
+	setup_player_roles()
+
+func setup_player_roles():
+	var is_host = multiplayer.is_server()
+
+	if is_host:
+		# Host controls player, so play "host" anim on player's side
+		player_sprite.play("host")
+		opponent_sprite.play("opponent")
+	else:
+		# Client controls the opponent sprite's role reversed visually
+		player_sprite.flip_h = true
+		opponent_sprite.flip_h = true
+		player_sprite.play("opponent")
+		opponent_sprite.play("host")
+
 
 func _start_game_timer() -> void:
 	# Create and configure timer

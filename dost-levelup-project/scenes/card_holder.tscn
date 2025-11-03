@@ -80,36 +80,36 @@ grow_vertical = 2
 
 [node name="card_slot" parent="GridContainer" instance=ExtResource("1_oelby")]
 layout_mode = 2
-offset_left = 5.5
-offset_top = 1.0
-offset_right = 5.5
-offset_bottom = 1.0
+offset_left = 43.5
+offset_top = -25.0
+offset_right = 43.5
+offset_bottom = -25.0
 
 [node name="card_slot2" parent="GridContainer" instance=ExtResource("1_oelby")]
 layout_mode = 2
-offset_left = 108.5
-offset_top = 2.0
-offset_right = 108.5
-offset_bottom = 2.0
+offset_left = 129.5
+offset_top = -25.0
+offset_right = 129.5
+offset_bottom = -25.0
 
 [node name="card_slot3" parent="GridContainer" instance=ExtResource("1_oelby")]
 layout_mode = 2
-offset_left = 269.5
-offset_top = 4.0
-offset_right = 269.5
-offset_bottom = 4.0
+offset_left = 263.5
+offset_top = -25.0
+offset_right = 263.5
+offset_bottom = -25.0
 
 [node name="card_slot4" parent="GridContainer" instance=ExtResource("1_oelby")]
 layout_mode = 2
-offset_left = 374.5
-offset_top = 2.0
-offset_right = 374.5
-offset_bottom = 2.0
+offset_left = 348.5
+offset_top = -25.0
+offset_right = 348.5
+offset_bottom = -25.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -2
-position = Vector2(201, 16)
-scale = Vector2(1.19375, 1.23056)
+position = Vector2(211, -12)
 sprite_frames = SubResource("SpriteFrames_uvamn")
-frame_progress = 0.326764
+autoplay = "default"
+frame_progress = 0.957164
 metadata/_edit_lock_ = true

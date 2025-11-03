@@ -144,7 +144,7 @@ func trigger_disaster(card_id: int, disaster_instance):
 				if multiplayer.is_server():
 					var roll = randi_range(1, 100)
 					var new_index = []
-					if roll <= 40 and adjacent_plot_indices.size() > 0:
+					if roll <= 45 and adjacent_plot_indices.size() > 0:
 						new_index = adjacent_plot_indices.pick_random()
 					if board_owner == "player":
 						var opponent_tile = get_tree().root.get_node("Game/OpponentPlot").get_tile_at(plot_index)
@@ -167,11 +167,11 @@ func trigger_disaster(card_id: int, disaster_instance):
 				await get_tree().create_timer(0.8).timeout
 				for adj_index in adjacent_plot_indices:
 					var tile = parent_node.get_tile_at(adj_index)
+					var card_res = ResourceLoader.load("res://cards/card_13.tres")
+					var disaster_scene = card_res.disaster_scene
+					var d_i = disaster_scene.instantiate()
+					tile.add_child(d_i)
 					if tile and tile.is_occupied and tile.building_scene:
-						var card_res = ResourceLoader.load("res://cards/card_13.tres")
-						var disaster_scene = card_res.disaster_scene
-						var d_i = disaster_scene.instantiate()
-						tile.add_child(d_i)
 						tile.building_scene.take_damage(7.5, "water")
 						tile.building_scene.fire_resistance = 1 if tile.building_scene.fire_resistance + 0.05 > 1.0 else tile.building_scene.fire_resistance + 0.05
 						tile.building_scene.wind_resistance = 1 if tile.building_scene.wind_resistance + 0.05 > 1.0 else tile.building_scene.wind_resistance + 0.05
@@ -184,7 +184,7 @@ func sync_tornado_roll(roll: int, new_index: Array):
 	var card_res = ResourceLoader.load("res://cards/card_12.tres")
 	var disaster_scene = card_res.disaster_scene
 
-	if roll <= 40: #40% chance to move it 
+	if roll <= 45: #45% chance to move it 
 		if new_index.size() == 2:
 			var parent_node = get_parent().get_parent()
 			var target_tile = parent_node.get_tile_at(new_index)
@@ -197,7 +197,7 @@ func sync_tornado_roll(roll: int, new_index: Array):
 		# dissipate
 		pass
 	else: #hahahaha again!!!!
-		await get_tree().create_timer(0.8).timeout
+		await get_tree().create_timer(0.1).timeout
 		var disaster_instance = disaster_scene.instantiate()
 		self.add_child(disaster_instance)
 		trigger_disaster(12, disaster_instance)
