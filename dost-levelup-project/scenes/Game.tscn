@@ -168,10 +168,10 @@ theme_override_fonts/font = ExtResource("3_s0nni")
 text = "CUrrent Player"
 
 [node name="PlayerEnergy" type="Label" parent="CanvasLayer"]
-offset_left = 567.0
-offset_top = 525.0
-offset_right = 604.0
-offset_bottom = 553.0
+offset_left = 562.0
+offset_top = 565.0
+offset_right = 599.0
+offset_bottom = 593.0
 theme_override_colors/font_color = Color(0.0347404, 0.193706, 0.0775828, 1)
 theme_override_fonts/font = ExtResource("3_s0nni")
 text = " 3"
@@ -205,10 +205,10 @@ autoplay = "default"
 frame_progress = 0.242046
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 566.0
-offset_top = 619.0
-offset_right = 606.0
-offset_bottom = 642.0
+offset_left = 565.0
+offset_top = 626.0
+offset_right = 605.0
+offset_bottom = 649.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_s0nni")
 theme_override_font_sizes/font_size = 8
@@ -249,9 +249,9 @@ offset_bottom = -10.0
 [node name="PlayerCards" parent="CanvasLayer" instance=ExtResource("1_ibkli")]
 z_index = 1
 offset_left = 354.0
-offset_top = 527.0
+offset_top = 575.0
 offset_right = 733.952
-offset_bottom = 674.208
+offset_bottom = 722.208
 metadata/_edit_lock_ = true
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="CanvasLayer"]
@@ -273,7 +273,6 @@ frame_progress = 0.0617318
 metadata/_edit_lock_ = true
 
 [node name="camera_manager" parent="." instance=ExtResource("2_78awf")]
-visible = false
 position = Vector2(-4, 0)
 min_zoom = 1.0
 drag_speed = 2.0

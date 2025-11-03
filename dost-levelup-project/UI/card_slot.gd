@@ -69,14 +69,14 @@ func set_selected(selected: bool) -> void:
 		name_tween = null
 	
 	if selected:
-		itemDisplay.scale = Vector2(2, 2)
+		itemDisplay.scale = Vector2(1.5, 1.5)
 		itemDisplay.position = _orig_item_pos + Vector2(0, -8)
 		name_tween = create_tween()
 		name_tween.set_loops()
 		name_tween.tween_property(itemDisplay, "modulate", Color(0.8, 0.9, 1, 1), 0.45).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		name_tween.tween_property(itemDisplay, "modulate", Color(1, 1, 1, 1), 0.45).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	else:
-		itemDisplay.scale = Vector2(1.5, 1.5)
+		itemDisplay.scale = Vector2(1.0, 1.0)
 		itemDisplay.position = _orig_item_pos
 		itemDisplay.modulate = Color(1, 1, 1, 1)
 
@@ -87,7 +87,7 @@ func _on_mouse_entered():
 		if _is_selected:
 			return
 		var t = create_tween()
-		t.tween_property(itemDisplay, "scale", Vector2(2, 2), 0.12)
+		t.tween_property(itemDisplay, "scale", Vector2(1.5, 1.5), 0.12)
 		t.tween_property(itemDisplay, "position", _orig_item_pos + Vector2(0, -8), 0.12)
 
 func _on_mouse_exited():
@@ -97,5 +97,5 @@ func _on_mouse_exited():
 		if _is_selected:
 			return
 		var t = create_tween()
-		t.tween_property(itemDisplay, "scale", Vector2(1.5, 1.5), 0.12)
+		t.tween_property(itemDisplay, "scale", Vector2(1.0, 1.0), 0.12)
 		t.tween_property(itemDisplay, "position", _orig_item_pos, 0.12)
