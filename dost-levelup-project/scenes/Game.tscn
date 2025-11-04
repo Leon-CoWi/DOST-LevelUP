@@ -282,30 +282,6 @@ limit_right = 800.0
 limit_bottom = 300.0
 pan_margin = 128.0
 
-[node name="TileMapLayer" type="TileMapLayer" parent="camera_manager"]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(-5, 138)
-scale = Vector2(0.355, 0.355)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
-tile_set = SubResource("TileSet_g4kob")
-
-[node name="TileMapLayer111" type="TileMapLayer" parent="camera_manager"]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(-5, 138)
-scale = Vector2(0.355, 0.355)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
-tile_set = SubResource("TileSet_g4kob")
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="camera_manager"]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(-135, 139)
-scale = Vector2(0.355, 0.355)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
-tile_set = SubResource("TileSet_g4kob")
-
 [node name="TileMapLayer3" type="TileMapLayer" parent="camera_manager"]
 y_sort_enabled = true
 texture_filter = 1
