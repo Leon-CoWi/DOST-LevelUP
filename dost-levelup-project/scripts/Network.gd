@@ -98,6 +98,7 @@ func _ready():
 
 func start_host(port: int = DEFAULT_PORT) -> void:
 	peer = ENetMultiplayerPeer.new()
+	# Bind to all interfaces (0.0.0.0) to accept LAN connections
 	var err = peer.create_server(port, MAX_PLAYERS)
 	if err != OK:
 		push_error("Failed to create server: %s" % err)
@@ -114,7 +115,13 @@ func start_host(port: int = DEFAULT_PORT) -> void:
 	player_energy[host_id] = 3
 	broadcast_player_list()
 	
+	print("========================================")
 	print("Server started on port %d" % port)
+	print("Local IP addresses for LAN connection:")
+	print("  - Use 'ipconfig' (Windows) or 'ifconfig' (Mac/Linux) to find your LAN IP")
+	print("  - Share this IP (192.168.x.x or 10.x.x.x) with other players")
+	print("  - Port: %d" % port)
+	print("========================================")
 	emit_signal("connected", true, "host_started")
 
 func stop_host() -> void:
@@ -132,13 +139,20 @@ func stop_host() -> void:
 
 func join_host(ip: String = DEFAULT_IP, port: int = DEFAULT_PORT) -> void:
 	peer = ENetMultiplayerPeer.new()
+	print("========================================")
+	print("Attempting to connect to %s:%d" % [ip, port])
+	print("========================================")
 	var err = peer.create_client(ip, port)
 	if err != OK:
-		push_error("Failed to create client: %s" % err)
+		push_error("Failed to create client: Error code %s" % err)
+		push_error("Common issues:")
+		push_error("  1. Host firewall blocking port %d" % port)
+		push_error("  2. Wrong IP address (use LAN IP, not 'localhost')")
+		push_error("  3. Host not started yet")
+		push_error("  4. Not on same network")
 		emit_signal("connected", false, "create_client_failed")
 		return
 	multiplayer.multiplayer_peer = peer
-	print("Attempting connection to %s:%d" % [ip, port])
 
 func leave_host() -> void:
 	if multiplayer.multiplayer_peer:
