@@ -281,7 +281,6 @@ limit_top = -500.0
 limit_right = 800.0
 limit_bottom = 300.0
 pan_margin = 128.0
-metadata/_edit_lock_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="camera_manager"]
 y_sort_enabled = true
@@ -1174,17 +1173,17 @@ tile_set = SubResource("TileSet_g4kob")
 [node name="Players" type="Node" parent="."]
 
 [node name="PlayerPlot" parent="." instance=ExtResource("3_cpr0p")]
-offset_left = -10.0
-offset_top = 53.0
-offset_right = -10.0
-offset_bottom = 53.0
+offset_left = -8.0
+offset_top = 42.0
+offset_right = -8.0
+offset_bottom = 42.0
 scale = Vector2(6, 6)
 
 [node name="OpponentPlot" parent="." instance=ExtResource("3_cpr0p")]
-offset_left = 693.0
-offset_top = 54.0
-offset_right = 693.0
-offset_bottom = 54.0
+offset_left = 692.0
+offset_top = 44.0
+offset_right = 692.0
+offset_bottom = 44.0
 scale = Vector2(6, 6)
 
 [connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]

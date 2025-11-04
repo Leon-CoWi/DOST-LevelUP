@@ -17,6 +17,7 @@ texture_normal = ExtResource("1_7c8nn")
 script = ExtResource("1_4dmsh")
 
 [node name="PanelContainer" parent="." instance=ExtResource("3_7c8nn")]
+visible = false
 layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
