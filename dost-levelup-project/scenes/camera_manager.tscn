@@ -5,7 +5,7 @@
 [node name="camera_manager" type="Node2D"]
 script = ExtResource("1_utxs1")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Cum" type="Camera2D" parent="."]
 anchor_mode = 0
 limit_smoothed = true
 editor_draw_limits = true
