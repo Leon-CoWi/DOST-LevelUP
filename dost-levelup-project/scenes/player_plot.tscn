@@ -10,86 +10,273 @@ anchors_preset = 0
 mouse_filter = 1
 script = ExtResource("1_jcilw")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 0
-offset_right = 176.0
-offset_bottom = 176.0
+[node name="GridContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 435.0
 scale = Vector2(0.15, 0.15)
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-columns = 5
 
 [node name="PlayerPlot_GridContainer#Plot_2" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 144.0
+offset_bottom = 87.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_0" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 144.0
+offset_right = 288.0
+offset_bottom = 87.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_1" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 288.0
+offset_right = 432.0
+offset_bottom = 87.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_3" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 432.0
+offset_right = 576.0
+offset_bottom = 87.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_4" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 576.0
+offset_right = 720.0
+offset_bottom = 87.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_5" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 87.0
+offset_right = 144.0
+offset_bottom = 174.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_6" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 144.0
+offset_top = 87.0
+offset_right = 288.0
+offset_bottom = 174.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_7" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 288.0
+offset_top = 87.0
+offset_right = 432.0
+offset_bottom = 174.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_8" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 432.0
+offset_top = 87.0
+offset_right = 576.0
+offset_bottom = 174.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_9" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 576.0
+offset_top = 87.0
+offset_right = 720.0
+offset_bottom = 174.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_10" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 174.0
+offset_right = 144.0
+offset_bottom = 261.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_11" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 144.0
+offset_top = 174.0
+offset_right = 288.0
+offset_bottom = 261.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_12" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 288.0
+offset_top = 174.0
+offset_right = 432.0
+offset_bottom = 261.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_13" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 432.0
+offset_top = 174.0
+offset_right = 576.0
+offset_bottom = 261.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_14" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 576.0
+offset_top = 174.0
+offset_right = 720.0
+offset_bottom = 261.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_15" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 261.0
+offset_right = 144.0
+offset_bottom = 348.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_16" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 144.0
+offset_top = 261.0
+offset_right = 288.0
+offset_bottom = 348.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_17" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 288.0
+offset_top = 261.0
+offset_right = 432.0
+offset_bottom = 348.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_18" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 432.0
+offset_top = 261.0
+offset_right = 576.0
+offset_bottom = 348.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_19" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 576.0
+offset_top = 261.0
+offset_right = 720.0
+offset_bottom = 348.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_20" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 348.0
+offset_right = 144.0
+offset_bottom = 435.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_21" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 144.0
+offset_top = 348.0
+offset_right = 288.0
+offset_bottom = 435.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_23" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 288.0
+offset_top = 348.0
+offset_right = 432.0
+offset_bottom = 435.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_22" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 432.0
+offset_top = 348.0
+offset_right = 576.0
+offset_bottom = 435.0
+scale = Vector2(1, 1)
 
 [node name="PlayerPlot_GridContainer#Plot_24" parent="GridContainer" instance=ExtResource("1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 576.0
+offset_top = 348.0
+offset_right = 720.0
+offset_bottom = 435.0
+scale = Vector2(1, 1)
