@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://dsrbtqapn06ov"]
+[gd_resource type="Resource" script_class="Card" load_steps=5 format=3 uid="uid://dsrbtqapn06ov"]
 
 [ext_resource type="PackedScene" uid="uid://d3k75fe0xugm" path="res://disasters/toxic.tscn" id="1_gsjlm"]
 [ext_resource type="Script" uid="uid://bsesgdbmuhudn" path="res://cards/card.gd" id="2_30uk2"]
 [ext_resource type="Texture2D" uid="uid://bvlj40gpqyi1w" path="res://Assets/cards/Card-back-temp.png" id="3_erkxr"]
+[ext_resource type="Texture2D" uid="uid://bt12bikcyvmvc" path="res://Assets/cards/toxic-surge-card.png" id="4_uh04l"]
 
 [resource]
 script = ExtResource("2_30uk2")
@@ -10,7 +11,7 @@ id = 13
 name = "Tornado Sweep"
 description = ""
 type = "Disaster"
-texture_face_up = ExtResource("3_erkxr")
+texture_face_up = ExtResource("4_uh04l")
 texture_face_down = ExtResource("3_erkxr")
 cost = 5
 card_frequency = 0
